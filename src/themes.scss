@@ -1,0 +1,48 @@
+@import '~@angular/material/core/theming/all-theme';
+@import '~@covalent/core/theming/all-theme';
+/*@import '~@covalent/core/common/styles/layout';*/
+
+
+
+
+
+/*@import '~@covalent/markdown/markdown-theme';
+@import '~@covalent/highlight/highlight-theme';*/
+
+@include mat-core();
+
+$primary: mat-palette($mat-green, 800);
+$accent:  mat-palette($mat-light-blue, 600, A100, A400);
+
+$warn:    mat-palette($mat-red, 600);
+
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+@include covalent-theme($theme);
+
+// (optional) Additional themes
+/*@include covalent-markdown-theme($theme);
+@include covalent-highlight-theme();*/
+
+.dark-grey-blue {
+   $primary3: mat-palette($mat-blue-grey, 800);
+   $accent3:  mat-palette($mat-teal, 500);
+   $warn3:    mat-palette($mat-red, 600);
+
+   $dark-grey-blue: mat-dark-theme($primary3, $accent3, $warn3);
+
+   @include angular-material-theme($dark-grey-blue);
+   @include covalent-theme($dark-grey-blue);
+ }
+.dark-green-blue{
+  $primary3: mat-palette($mat-green, 800);
+  $accent3:  mat-palette($mat-teal, 500);
+  $warn3:    mat-palette($mat-red, 600);
+
+  $dark-green-blue: mat-dark-theme($primary3, $accent3, $warn3);
+
+  @include angular-material-theme($dark-green-blue);
+  @include covalent-theme($dark-green-blue);
+}

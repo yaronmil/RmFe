@@ -1,0 +1,138 @@
+<td-layout  logo="assets:covalent" style="direction: ltr;"  class="dark-grey-blue" >
+  <div class="bgc-black inset charts-dark" flex>
+    <div layout-gt-xs="row" layout-wrap>
+      <div flex-gt-xs="40" style="direction: rtl;">
+        <md-card>
+          <md-card-title>סה"כ תקלות</md-card-title>
+          <md-card-subtitle>כמות התקלות בכל סדרי העלאה</md-card-subtitle>
+          <md-divider></md-divider>
+          <div style="height:290px;overflow:hidden;direction: ltr;" class="pad-top-sm" >
+            <ngx-charts-area-chart-stacked
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [legend]="showLegend"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [xAxisTickFormatting]="totFaultsXlable"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-area-chart-stacked>
+          </div>
+        </md-card>
+      </div>
+      <div flex-gt-xs="60">
+        <div layout-gt-xs="row">
+          <div flex-gt-xs="100">
+            <ngx-charts-number-card
+              [scheme]="colorSchemeDark"
+              [results]="single">
+            </ngx-charts-number-card>
+          </div>
+        </div>
+
+          <div style="direction: rtl;" style="display: flex;flex-direction: row;">
+            <md-card style="flex: 2;">
+
+              <div style="height:230px;overflow:hidden;direction: rtl;"  >
+                <td-data-table
+                  [data]="basicData"
+                  [columns]="columns">
+                  <template tdDataTableTemplate="type" let-value="value" let-row="row" let-column="column">
+                    <div layout="row">
+                      <span flex>{{value}}</span> // or <span flex>{{row[column]}}</span>
+                      <md-icon>star</md-icon>
+                    </div>
+                  </template>
+                </td-data-table>
+              </div>
+            </md-card>
+            <md-card  style="flex: 1;">
+
+              <div style="height:230px;overflow:hidden;direction: rtl;" class="pad-top-sm" >
+                <td-data-table
+                  [data]="basicData1"
+                  [columns]="columns1">
+                  <template tdDataTableTemplate="type" let-value="value" let-row="row" let-column="column">
+                    <div layout="row">
+                      <span flex>{{value}}</span> // or <span flex>{{row[column]}}</span>
+                      <md-icon>star</md-icon>
+                    </div>
+                  </template>
+                </td-data-table>
+              </div>
+            </md-card>
+          </div>
+
+      </div>
+      <div flex-gt-xs="33" style="direction: rtl;">
+        <md-card>
+          <md-card-title>מספר תקלות לפי חומרה</md-card-title>
+          <md-divider></md-divider>
+          <div style="height:250px;direction: ltr;" class="pad-top" >
+            <ngx-charts-bar-vertical-2d
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [legend]="showLegend"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-vertical-2d>
+          </div>
+        </md-card>
+      </div>
+      <div flex-gt-xs="33" style="direction: rtl;">
+        <md-card>
+          <md-card-title>כמות תקלות ביחס לתקופה מקבילה אשתקד</md-card-title>
+          <md-divider></md-divider>
+          <div style="height:250px;direction:ltr;" class="pad-top">
+            <ngx-charts-gauge
+              [scheme]="colorScheme"
+              [results]="single"
+              [min]="0"
+              [max]="100"
+              [units]="'usage'"
+              [bigSegments]="10"
+              [smallSegments]="5">
+            </ngx-charts-gauge>
+          </div>
+        </md-card>
+      </div>
+      <div flex-gt-xs="33">
+        <md-card>
+          <md-card-title>תקלות לפי סוג</md-card-title>
+          <md-divider></md-divider>
+          <div style="height:250px;overflow:hidden;" class="pad-top push-right">
+            <ngx-charts-bar-horizontal-stacked
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [legend]="showLegend"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel">
+            </ngx-charts-bar-horizontal-stacked>
+          </div>
+        </md-card>
+      </div>
+    </div>
+  </div>
+  <td-layout-footer>
+    <div layout="row" layout-align="end center" >
+
+      <md-slider style="width:800px;"   thumbLabel dir="rtl" tickInterval="20" step="1" min="1" max="365" value="365"  ></md-slider>
+      <span class="md-caption" style="direction: rtl;">ימים להצגה:</span>
+    </div>
+  </td-layout-footer>
+  <!--<a md-fab color="accent" class="md-fab-position-bottom-right" style="bottom:20px;" href="https://github.com/Teradata/covalent-quickstart/tree/develop/src/app/templates" target="_blank">
+    <md-icon>code</md-icon>
+  </a>-->
+</td-layout>
