@@ -6,5 +6,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  routes: Object[] = [{
+    title: 'Dashboard',
+    route: './dashboard',
+    icon: 'dashboard',
+  }, {
+    title: 'עץ יחידות',
+    route: './navframe',
+    icon: 'view_quilt',
+  }, {
+    title: 'עץ תהליכים',
+    route: '/faults',
+    icon: 'receipt',
+  }, {
+    title: 'ניהול',
+    route: '/אבמ',
+    icon: 'people',
+  },
+    {
+      title: 'testim',
+      route: '/test',
+      icon: 'view_module',
+    }
+
+  ];
 }

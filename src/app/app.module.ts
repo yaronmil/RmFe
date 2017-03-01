@@ -11,13 +11,21 @@ import { TestComponent } from './components/test/test.component';
 import 'hammerjs';
 import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {DashboardTemplateComponent} from "./components/dashboard/dashboard.component";
+import { NavigationFrameComponent } from './components/navigation-frame/navigation-frame.component';
+import {DashboardProductComponent} from "./components/dashboard-product/dashboard-product.component";
+import {TreeModule} from "angular2-tree-component";
+import { TreeComponent } from './components/tree/tree.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
-    DashboardTemplateComponent
+    DashboardTemplateComponent,
+    NavigationFrameComponent,
+    DashboardProductComponent,
+    TreeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +34,7 @@ import {DashboardTemplateComponent} from "./components/dashboard/dashboard.compo
     CovalentCoreModule.forRoot(),
     RouterModule.forRoot(AppRoutes),
     NgxChartsModule,
+    TreeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
