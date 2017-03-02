@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 /*@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';*/
 
+@import '~primeng/resources/primeng.css';
+@import '~primeng/resources/themes/home/theme.css';
 
 @font-face {
   font-family: 'Material Icons';
@@ -45,4 +47,9 @@ h1 {
 .mat-sidenav-content{
   display: flex !important;
   flex-direction:column !important;
+}
+/*סטייל לטקסט שבגריד של ng-prime*/
+.ui-widget
+{
+  font-family: Arial;
 }

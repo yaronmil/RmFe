@@ -15,6 +15,10 @@ import { NavigationFrameComponent } from './components/navigation-frame/navigati
 import {DashboardProductComponent} from "./components/dashboard-product/dashboard-product.component";
 import {TreeModule} from "angular2-tree-component";
 import { TreeComponent } from './components/tree/tree.component';
+import { GridComponent } from './components/grid/grid.component';
+import {DataTableModule,SharedModule} from 'primeng/primeng';
+
+
 
 
 
@@ -24,9 +28,15 @@ import { TreeComponent } from './components/tree/tree.component';
     TestComponent,
     DashboardTemplateComponent,
     NavigationFrameComponent,
+
     DashboardProductComponent,
-    TreeComponent
+    TreeComponent,
+    GridComponent,
+
+
   ],
+
+
   imports: [
     BrowserModule,
     FormsModule,
@@ -34,9 +44,14 @@ import { TreeComponent } from './components/tree/tree.component';
     CovalentCoreModule.forRoot(),
     RouterModule.forRoot(AppRoutes),
     NgxChartsModule,
-    TreeModule
+    TreeModule,
+    DataTableModule,SharedModule,
+
+
+
   ],
   providers: [],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
