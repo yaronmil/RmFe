@@ -17,6 +17,7 @@ import {TreeModule} from "angular2-tree-component";
 import { TreeComponent } from './components/tree/tree.component';
 import { GridComponent } from './components/grid/grid.component';
 import {DataTableModule,SharedModule} from 'primeng/primeng';
+import { ProcessesGridComponent } from './components/gridmodel/processes-grid.component';
 
 
 
@@ -32,6 +33,7 @@ import {DataTableModule,SharedModule} from 'primeng/primeng';
     DashboardProductComponent,
     TreeComponent,
     GridComponent,
+    ProcessesGridComponent,
 
 
   ],
