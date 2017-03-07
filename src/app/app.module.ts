@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -26,6 +26,8 @@ import { ProcessDialogComponent } from './components/unitsnav/processes-view/pro
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,8 @@ import { ProcessDialogComponent } from './components/unitsnav/processes-view/pro
     ProcessesGridComponent,
     NavScrollComponent,
     ProcessesViewComponent,
-    ProcessDialogComponent
+    ProcessDialogComponent,
+
 
 
 
@@ -54,7 +57,7 @@ import { ProcessDialogComponent } from './components/unitsnav/processes-view/pro
     RouterModule.forRoot(AppRoutes),
     NgxChartsModule,
     TreeModule,
-    DataTableModule,SharedModule,
+    DataTableModule,SharedModule,ReactiveFormsModule
 
 
 
