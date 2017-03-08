@@ -1,0 +1,77 @@
+
+  <md-grid-tile-header>
+    תהליכים
+    <span flex></span>
+    <button md-mini-fab class="example-fab"  (click)="addProcess();" >
+      <md-icon>add</md-icon>
+    </button>
+  </md-grid-tile-header>
+
+  <div layout-gt-xs="row" layout-wrap>
+    <div flex-gt-xs="33" style="direction: rtl;">
+      <md-card>
+        <md-card-title>מספר תהליכים לפי צבע</md-card-title>
+        <md-divider></md-divider>
+        <div style="height:250px;direction: ltr;" class="pad-top">
+          <ngx-charts-bar-vertical-2d
+            [scheme]="colorScheme"
+            [results]="multi"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel">
+          </ngx-charts-bar-vertical-2d>
+        </div>
+      </md-card>
+    </div>
+    <div flex-gt-xs="33" style="direction: rtl;">
+      <md-card>
+        <md-card-title>התפלגות תהליכים במפה</md-card-title>
+        <md-divider></md-divider>
+        <div style="height:250px;direction: ltr;" class="pad-top">
+          <ngx-charts-pie-chart
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="single"
+            [legend]="showLegend"
+            [explodeSlices]="explodeSlices"
+            [labels]="showLabels"
+            [doughnut]="doughnut"
+            [gradient]="gradient"
+          >
+          </ngx-charts-pie-chart>
+        </div>
+
+      </md-card>
+    </div>
+    <div flex-gt-xs="33" style="direction: rtl;">
+      <md-card>
+        <md-card-title>מספר תהליכים לפי צבע</md-card-title>
+        <md-divider></md-divider>
+        <div style="height:250px;direction: ltr;" class="pad-top">
+          <ngx-charts-bar-vertical-2d
+            [scheme]="colorScheme"
+            [results]="multi"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel">
+          </ngx-charts-bar-vertical-2d>
+        </div>
+      </md-card>
+    </div>
+  </div>
+
+
+  <app-processes-grid></app-processes-grid>
+
+
+

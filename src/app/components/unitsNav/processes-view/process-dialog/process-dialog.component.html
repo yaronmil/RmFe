@@ -1,0 +1,68 @@
+<h2 md-dialog-title dir="rtl">הוסף תהליך</h2>
+<md-dialog-content dir="rtl">
+
+  <form  [formGroup]="processForm" novalidate>
+    <p>
+      <md-input-container class="example-full-width" >
+        <input mdInput placeholder="שם תהליך" formControlName="name">
+
+      </md-input-container>
+    </p>
+
+    <p>
+      <md-input-container>
+        <textarea mdInput
+                  mdTextareaAutosize
+                  placeholder="תיאור תהליך"  formControlName="desc"></textarea>
+      </md-input-container>
+    </p>
+
+    <p>
+      <md-input-container class="example-full-width">
+        <input mdInput placeholder="אחראי"  formControlName="resp">
+
+      </md-input-container>
+    </p>
+    <p>
+      <md-input-container>
+        <input mdInput placeholder="סטטוס" [mdAutocomplete]="auto" formControlName="status">
+      </md-input-container>
+
+      <md-autocomplete #auto="mdAutocomplete"  >
+        <md-option *ngFor="let state of filteredStates | async" [value]="state">
+          {{ state }}
+        </md-option>
+      </md-autocomplete>
+    </p>
+    <p>
+      <md-input-container class="example-full-width">
+        <input mdInput placeholder="חטיבה">
+
+      </md-input-container>
+      <md-input-container class="example-full-width">
+        <input mdInput placeholder="יחידה"  formControlName="unit">
+
+      </md-input-container>
+    </p>
+    <p>
+      <md-input-container class="example-full-width"  >
+        <input mdInput placeholder="צבע" formControlName="color">
+
+      </md-input-container>
+
+    </p>
+    <p>
+
+    </p>
+  </form>
+</md-dialog-content>
+<md-dialog-actions [attr.align]="'left'">
+  <button (click)="save();"
+    md-raised-button
+    color="primary"
+    >שמור</button>
+
+
+
+
+</md-dialog-actions>

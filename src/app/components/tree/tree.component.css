@@ -1,0 +1,14 @@
+.tree {
+  width: 300px;
+  display: block;
+}
+.tree-node {
+  direction: rtl;
+  text-align: right;
+}
+.tree-children {
+  padding-right: 20px;
+}
+.tree-node-collapsed .toggle-children-wrapper .toggle-children {
+  transform: rotate(180deg) !important;
+}

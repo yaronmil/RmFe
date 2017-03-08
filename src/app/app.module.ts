@@ -21,6 +21,7 @@ import { ProcessesGridComponent } from './components/gridmodel/processes-grid.co
 import { NavScrollComponent } from './components/unitsNav/nav-scroll/nav-scroll.component';
 import {ProcessesViewComponent} from './components/unitsnav/processes-view/processes-view.component';
 import { ProcessDialogComponent } from './components/unitsnav/processes-view/process-dialog/process-dialog.component';
+import {ProcessesService} from "./services/process.service";
 
 
 
@@ -62,7 +63,7 @@ import { ProcessDialogComponent } from './components/unitsnav/processes-view/pro
 
 
   ],
-  providers: [],
+  providers: [ProcessesService],
   entryComponents: [
     ProcessDialogComponent
   ],

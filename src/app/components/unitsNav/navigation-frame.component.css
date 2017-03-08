@@ -1,0 +1,32 @@
+.tree {
+  width: 300px;
+  display: block;
+}
+.tree-node {
+  direction: rtl;
+  text-align: right;
+}
+.tree-children {
+  padding-right: 20px;
+}
+.tree-node-collapsed .toggle-children-wrapper .toggle-children {
+  transform: rotate(180deg) !important;
+}
+.mat-figure{
+  flex-direction: column !important;
+  align-items: inherit !important;
+  justify-content: inherit !important;
+/*  flex-direction: column !important;
+  justify-content: inherit !important;*/
+}
+.mat-grid-tile-header
+{
+  position: relative !important;
+}
+.td-data-table-column{
+  text-align: center !important;
+}
+.td-data-table-cell{
+ text-align: right !important;
+}
+

@@ -1,0 +1,9 @@
+<tree-root [nodes]="nodes" class="rtl-tree">
+  <template #treeNodeTemplate let-node="node" let-index="index">
+    <div style="width:150px;">
+      <md-icon *ngIf="node.data.icon" class="md-18">{{node.data.icon}}</md-icon>
+      <span style="white-space: nowrap;position: absolute;padding-right:2px;">{{ node.data.name }}</span>
+    </div>
+
+  </template>
+</tree-root>

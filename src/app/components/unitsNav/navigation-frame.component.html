@@ -1,0 +1,345 @@
+<!--<app-tree></app-tree>-->
+
+<td-layout-manage-list dir="rtl" [opened]="true" #navframelayout>
+  <md-toolbar td-sidenav-content>
+    <span>עץ ערגוני</span>
+
+
+  </md-toolbar>
+  <md-nav-list td-sidenav-content>
+    <app-tree></app-tree>
+    <!--   <a md-list-item>
+
+         <md-icon md-list-icon>dashboard</md-icon>
+         Dashboard
+       </a>
+       <a md-list-item>
+
+         <md-icon md-list-icon>insert_chart</md-icon>
+         Stats
+       </a>
+       <a md-list-item>
+
+         <md-icon md-list-icon>star</md-icon>
+         Features
+       </a>
+
+       <h3 md-subheader>Admin Menu</h3>
+       <a md-list-item  >
+         <md-icon md-list-icon>receipt</md-icon>
+         Log
+       </a>
+       <a md-list-item  >
+         <md-icon md-list-icon>settings</md-icon>
+         Settings
+       </a>-->
+  </md-nav-list>
+
+  <div td-toolbar-content layout="row" layout-align="start center" flex>
+    <span>{{title}}</span>
+
+
+    <!--    <td-steps mode="horizontal">
+          <td-step #step1 label="Basic Usage" sublabel="30 תהליכים 4 קריטיים" [active]="true"    >
+            <template td-step-label><span>תהליכים</span></template>
+
+          </td-step>
+          <td-step #step1 label="Basic Usage" sublabel="30 סיכונים 4 קריטיים"   [active]="true" >
+            <template td-step-label><span>סיכונים</span></template>
+          </td-step>
+          <td-step #step1 label="Basic Usage" sublabel="30 תהליכים 4 קריטיים"  [active]="true" >
+            <template td-step-label><span>אירועים</span></template>
+          </td-step>
+          <td-step #step1 label="Basic Usage"  sublabel="30 תהליכים 4 קריטיים" [active]="true" >
+            <template td-step-label><span>AI</span></template>
+          </td-step>
+
+        </td-steps>-->
+
+    <app-nav-scroll></app-nav-scroll>
+
+    <!--
+        <div  style="background-color: #039be5;border-radius: 99%;height:24px;width:24px;line-height: 24px;font-size:14px; color:white;text-align: center;">
+          <span>  <md-icon class="md-24"  >directions_walk</md-icon> </span>
+        &lt;!&ndash;
+          <md-icon class="md-18" class="mat-primary" >directions_walk</md-icon>
+        </button>&ndash;&gt;
+        </div>-->
+
+
+    <span flex></span>
+    <button md-icon-button>
+      <md-icon class="md-24">view_module</md-icon>
+    </button>
+    <button md-icon-button>
+      <md-icon class="md-24">sort</md-icon>
+    </button>
+    <button md-icon-button>
+      <md-icon class="md-24">settings</md-icon>
+    </button>
+    <button md-icon-button>
+      <md-icon class="md-24">more_vert</md-icon>
+    </button>
+  </div>
+
+  <md-grid-list cols="1" rowHeight="800px">
+    <md-grid-tile>
+      <app-processes-view></app-processes-view>
+
+
+    </md-grid-tile>
+    <md-grid-tile>
+      <md-grid-tile-header>
+        סיכונים
+      </md-grid-tile-header>
+
+
+      <div layout-gt-xs="row" layout-wrap>
+        <div flex-gt-xs="33" style="direction: rtl;">
+          <md-card>
+            <md-card-title>מספר תהליכים לפי צבע</md-card-title>
+            <md-divider></md-divider>
+            <div style="height:250px;direction: ltr;" class="pad-top">
+              <ngx-charts-bar-vertical-2d
+                [scheme]="colorScheme"
+                [results]="multi"
+                [gradient]="gradient"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis"
+                [legend]="showLegend"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel">
+              </ngx-charts-bar-vertical-2d>
+            </div>
+          </md-card>
+        </div>
+        <div flex-gt-xs="33" style="direction: rtl;">
+          <md-card>
+            <md-card-title>התפלגות תהליכים במפה</md-card-title>
+            <md-divider></md-divider>
+            <div style="height:250px;direction: ltr;" class="pad-top">
+              <ngx-charts-pie-chart
+                [view]="view"
+                [scheme]="colorScheme"
+                [results]="single"
+                [legend]="showLegend"
+                [explodeSlices]="explodeSlices"
+                [labels]="showLabels"
+                [doughnut]="doughnut"
+                [gradient]="gradient"
+              >
+              </ngx-charts-pie-chart>
+            </div>
+
+          </md-card>
+        </div>
+        <div flex-gt-xs="33" style="direction: rtl;">
+          <md-card>
+            <md-card-title>מספר תהליכים לפי צבע</md-card-title>
+            <md-divider></md-divider>
+            <div style="height:250px;direction: ltr;" class="pad-top">
+              <ngx-charts-bar-vertical-2d
+                [scheme]="colorScheme"
+                [results]="multi"
+                [gradient]="gradient"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis"
+                [legend]="showLegend"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel">
+              </ngx-charts-bar-vertical-2d>
+            </div>
+          </md-card>
+        </div>
+      </div>
+
+      <!--<app-processes-grid></app-processes-grid>-->
+
+
+    </md-grid-tile>
+
+    <md-grid-tile>
+      <md-grid-tile-header>
+        אירועים
+      </md-grid-tile-header>
+
+
+      <div layout-gt-xs="row" layout-wrap>
+        <div flex-gt-xs="33" style="direction: rtl;">
+          <md-card>
+            <md-card-title>מספר תהליכים לפי צבע</md-card-title>
+            <md-divider></md-divider>
+            <div style="height:250px;direction: ltr;" class="pad-top">
+              <ngx-charts-bar-vertical-2d
+                [scheme]="colorScheme"
+                [results]="multi"
+                [gradient]="gradient"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis"
+                [legend]="showLegend"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel">
+              </ngx-charts-bar-vertical-2d>
+            </div>
+          </md-card>
+        </div>
+        <div flex-gt-xs="33" style="direction: rtl;">
+          <md-card>
+            <md-card-title>התפלגות תהליכים במפה</md-card-title>
+            <md-divider></md-divider>
+            <div style="height:250px;direction: ltr;" class="pad-top">
+              <ngx-charts-pie-chart
+                [view]="view"
+                [scheme]="colorScheme"
+                [results]="single"
+                [legend]="showLegend"
+                [explodeSlices]="explodeSlices"
+                [labels]="showLabels"
+                [doughnut]="doughnut"
+                [gradient]="gradient"
+              >
+              </ngx-charts-pie-chart>
+            </div>
+
+          </md-card>
+        </div>
+        <div flex-gt-xs="33" style="direction: rtl;">
+          <md-card>
+            <md-card-title>מספר תהליכים לפי צבע</md-card-title>
+            <md-divider></md-divider>
+            <div style="height:250px;direction: ltr;" class="pad-top">
+              <ngx-charts-bar-vertical-2d
+                [scheme]="colorScheme"
+                [results]="multi"
+                [gradient]="gradient"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis"
+                [legend]="showLegend"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel">
+              </ngx-charts-bar-vertical-2d>
+            </div>
+          </md-card>
+        </div>
+      </div>
+
+      <!--<app-processes-grid></app-processes-grid>-->
+
+
+    </md-grid-tile>
+
+    <md-grid-tile>
+      <md-grid-tile-header>
+        תוכנית הפחתה
+      </md-grid-tile-header>
+
+
+      <div layout-gt-xs="row" layout-wrap>
+        <div flex-gt-xs="33" style="direction: rtl;">
+          <md-card>
+            <md-card-title>מספר תהליכים לפי צבע</md-card-title>
+            <md-divider></md-divider>
+            <div style="height:250px;direction: ltr;" class="pad-top">
+              <ngx-charts-bar-vertical-2d
+                [scheme]="colorScheme"
+                [results]="multi"
+                [gradient]="gradient"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis"
+                [legend]="showLegend"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel">
+              </ngx-charts-bar-vertical-2d>
+            </div>
+          </md-card>
+        </div>
+        <div flex-gt-xs="33" style="direction: rtl;">
+          <md-card>
+            <md-card-title>התפלגות תהליכים במפה</md-card-title>
+            <md-divider></md-divider>
+            <div style="height:250px;direction: ltr;" class="pad-top">
+              <ngx-charts-pie-chart
+                [view]="view"
+                [scheme]="colorScheme"
+                [results]="single"
+                [legend]="showLegend"
+                [explodeSlices]="explodeSlices"
+                [labels]="showLabels"
+                [doughnut]="doughnut"
+                [gradient]="gradient"
+              >
+              </ngx-charts-pie-chart>
+            </div>
+
+          </md-card>
+        </div>
+        <div flex-gt-xs="33" style="direction: rtl;">
+          <md-card>
+            <md-card-title>מספר תהליכים לפי צבע</md-card-title>
+            <md-divider></md-divider>
+            <div style="height:250px;direction: ltr;" class="pad-top">
+              <ngx-charts-bar-vertical-2d
+                [scheme]="colorScheme"
+                [results]="multi"
+                [gradient]="gradient"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis"
+                [legend]="showLegend"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel">
+              </ngx-charts-bar-vertical-2d>
+            </div>
+          </md-card>
+        </div>
+      </div>
+<!--      <app-processes-grid></app-processes-grid>-->
+
+
+    </md-grid-tile>
+
+
+  </md-grid-list>
+
+
+  <!--<div flex-gt-sm="40">
+    <md-card>
+      <md-card-title>תהליכים</md-card-title>
+      <md-card-subtitle>Items requiring attention</md-card-subtitle>
+      <md-divider></md-divider>
+  fdfdsfs
+      <md-divider></md-divider>
+      <md-card-actions>
+        <a md-button color="accent" class="text-upper"  >
+          <span>View More</span>
+        </a>
+      </md-card-actions>
+    </md-card>
+    <md-card id="dashboard-favorites-card" class="push-top">
+      <md-card-title>Favorites</md-card-title>
+      <md-card-subtitle>Your favorite products</md-card-subtitle>
+      <md-divider></md-divider>
+      <md-nav-list class="will-load favorite-list">
+      ffffffffffff
+      </md-nav-list>
+      <md-divider></md-divider>
+      <md-card-actions>
+        <a md-button color="accent" class="text-upper"  >
+          <span>View More</span>
+        </a>
+      </md-card-actions>
+    </md-card>
+  </div>-->
+</td-layout-manage-list>
+
