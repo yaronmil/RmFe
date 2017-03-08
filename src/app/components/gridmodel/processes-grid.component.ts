@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {process} from "../../models/bll/process";
 import {gridColumn} from "../../models/gridColumn";
-import {ProcessesService} from "../../services/process.service";
 import {Observable} from "rxjs";
+import * as appStore from '../../store/reducers';
+
+import * as processesActions from '../../store/actions/processesActions';
+
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-processes-grid',
@@ -40,8 +44,15 @@ export class ProcessesGridComponent implements OnInit {
       field:"color"
     }
   ]
-  constructor(private processesService:ProcessesService) {
-    this.processesList$= processesService.loadServices();
+  constructor(private store: Store<appStore.AppState>) {
+    store.dispatch(new processesActions.LoadProcessesAction());
+store.subscribe(d=>console.log("ssssss",d));
+
+    this.processesList$=store.select(appStore.getProcessesList);
+
+
+
+
   }
 
   ngOnInit() {

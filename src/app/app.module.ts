@@ -22,7 +22,11 @@ import { NavScrollComponent } from './components/unitsNav/nav-scroll/nav-scroll.
 import {ProcessesViewComponent} from './components/unitsnav/processes-view/processes-view.component';
 import { ProcessDialogComponent } from './components/unitsnav/processes-view/process-dialog/process-dialog.component';
 import {ProcessesService} from "./services/process.service";
-
+import { reducer } from './store/reducers';
+import { StoreModule } from '@ngrx/store';
+import {RouterStoreModule} from "@ngrx/router-store";
+import {Effect, EffectsModule} from "@ngrx/effects";
+import {LoadProcessesEffectService} from "./store/effects/load-processes-effect.service";
 
 
 
@@ -58,7 +62,8 @@ import {ProcessesService} from "./services/process.service";
     RouterModule.forRoot(AppRoutes),
     NgxChartsModule,
     TreeModule,
-    DataTableModule,SharedModule,ReactiveFormsModule
+    DataTableModule,SharedModule,ReactiveFormsModule, StoreModule.provideStore(reducer),RouterStoreModule.connectRouter(),EffectsModule.run(LoadProcessesEffectService)
+
 
 
 

@@ -9,7 +9,7 @@ export class ProcessesService {
 
   constructor(private http: Http) { }
 
-  loadServices(): Observable<process[]> {
+  loadProcesses(): Observable<process[]> {
     return this.http.get('/api/processes' )
       .map(res => res.json());
   }
