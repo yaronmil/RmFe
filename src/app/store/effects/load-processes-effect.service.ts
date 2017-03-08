@@ -14,4 +14,12 @@ export class LoadProcessesEffectService {
     .ofType(processesActions.LOAD_PROCESSES)
     .switchMap(()=>this.processService.loadProcesses()).
     map(processesList=>new processesActions.ProcessesLoaded(processesList));
+
+
+  @Effect()
+  newProcess:Observable<Action>=this.action$
+    .ofType(processesActions.CREATE_PROCESS)
+    .switchMap(action=>this.processService.createProcess(action.payload)).
+    map(newProcess=>new processesActions.ProcessCreated(newProcess));
 }
+

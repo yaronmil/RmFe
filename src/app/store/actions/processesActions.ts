@@ -9,6 +9,7 @@ import {process} from "../../models/bll/process";
 export const  LOAD_PROCESSES =  '[Processes] LOAD PROCESSES';
 export const  PROCESSES_LOADED =  '[Processes] PROCESSES LOADES';
 export const  CREATE_PROCESS =  '[Processes] CREATE PROCESS';
+export const  PROCESS_CREATED =  '[Processes] PROCESS CREATED';
 
 
 export class LoadProcessesAction implements  Action {
@@ -40,7 +41,13 @@ export class CreateAction implements  Action {
   }
 
 }
+export class ProcessCreated implements  Action{
+
+  readonly type=PROCESS_CREATED;
+  constructor(public payload:process){}
+
+}
 export type Actions
-  = LoadProcessesAction | ProcessesLoaded |CreateAction;
+  = LoadProcessesAction | ProcessesLoaded |CreateAction |ProcessCreated;
 
 

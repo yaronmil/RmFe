@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {process} from "../../models/bll/process";
 import {gridColumn} from "../../models/gridColumn";
 import {Observable} from "rxjs";
@@ -10,48 +10,46 @@ import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-processes-grid',
-  template : '<app-grid [data]="processesList$ | async" [columns]="processGridColumns"></app-grid>'
+  template: '<app-grid [data]="processesList$ | async" [columns]="processGridColumns"></app-grid>'
 
 })
 export class ProcessesGridComponent implements OnInit {
 
-  processesList$:Observable<process[]>;
+  processesList$: Observable<process[]>;
 
-  processGridColumns:gridColumn[]=[{
-    header:"סידורי",
-    field:"id"
+  processGridColumns: gridColumn[] = [{
+    header: "סידורי",
+    field: "id"
   },
     {
-      header:"שם תהליך",
-      field:"name"
+      header: "שם תהליך",
+      field: "name"
     },
     {
-      header:"יחידות",
-      field:"units"
+      header: "יחידות",
+      field: "units"
     },
     {
-      header:"תיאור",
-      field:"desc"
+      header: "תיאור",
+      field: "desc"
     }
     ,
     {
-      header:"סטטוס",
-      field:"status"
+      header: "סטטוס",
+      field: "status"
     }
     ,
     {
-      header:"צבע",
-      field:"color"
+      header: "צבע",
+      field: "color"
     }
   ]
+
   constructor(private store: Store<appStore.AppState>) {
+
+    this.processesList$ = store.select(appStore.getProcessesList);
     store.dispatch(new processesActions.LoadProcessesAction());
-store.subscribe(d=>console.log("ssssss",d));
-
-    this.processesList$=store.select(appStore.getProcessesList);
-
-
-
+    /*store.subscribe(d=>console.log("ssssss",d));*/
 
   }
 

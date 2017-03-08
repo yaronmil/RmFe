@@ -4,7 +4,7 @@
 
 import {process} from "../../models/bll/process";
 import * as processesActions      from "../actions/processesActions"
-import { Action } from '@ngrx/store';
+import {Action} from '@ngrx/store';
 
 export interface State {
   processesList: process[];
@@ -28,11 +28,15 @@ export function reducer(state = initialState, action: processesActions.Actions):
   switch (action.type) {
     case processesActions.LOAD_PROCESSES:
       return state;
+    case processesActions.CREATE_PROCESS:
+      return state;
+    case processesActions.PROCESS_CREATED:
+      const newProcess=(action as Action).payload ;
+      const processesList=[...state.processesList,...newProcess]
+      return Object.assign({},state,{processesList});
     case processesActions.PROCESSES_LOADED:
-      console.log();
-
-      return  {
-        processesList:(action as Action).payload
+      return {
+        processesList: (action as Action).payload
       }
     default :
       return state;

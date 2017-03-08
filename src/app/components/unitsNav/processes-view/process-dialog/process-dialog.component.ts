@@ -4,6 +4,9 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {Http, RequestOptions, Headers, Response} from '@angular/http';
 import Promise = promise.Promise;
 import {promise} from "selenium-webdriver";
+import {AppState} from "../../../../store/reducers/index";
+import {Store} from "@ngrx/store";
+import {CreateAction} from "../../../../store/actions/processesActions";
 
 @Component({
   selector: 'app-process-dialog',
@@ -17,6 +20,7 @@ export class ProcessDialogComponent {
 
   constructor(
               public dialogRef: MdDialogRef<ProcessDialogComponent>,
+              private store:Store<AppState>,
               public http: Http) {
 
 
@@ -50,19 +54,7 @@ export class ProcessDialogComponent {
   }
 
   save() {
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({headers: headers});
-    /*this.http.get("api/services").do(res=>console.log(res)).subscribe();*/
-
-    console.log();
-    this.http.post("api/processes", this.processForm.value, options)
-      .do(() => {
-        console.log('sucess'),
-          this.dialogRef.close()
-      }).subscribe();
-    /*.catch(this.handleError);*/
-
-
+    this.store.dispatch(new CreateAction(this.processForm.value))
   }
 
   private handleError(error: Response | any) {
