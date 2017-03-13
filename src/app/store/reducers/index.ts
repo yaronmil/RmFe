@@ -32,4 +32,5 @@ export function reducer(state: any, action: any) {
 
 export const getProcessesState = (state: AppState) => state.processes;
 export const getProcessesList = createSelector(getProcessesState, fromProcesses.getProcessesList);
+export const getDialogOpen = createSelector(getProcessesState, fromProcesses.getDialogOpen);
 /*export const getShowSidenav = createSelector(getLayoutState, fromLayout.getShowSidenav);*/

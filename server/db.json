@@ -1,49 +1,13 @@
 {
   "processes": [
     {
-      "id": 1,
-      "name": "yar",
-      "resp": "r1",
-      "units": "3",
-      "desc": "56",
-      "staus": "gg",
-      "color": "ff"
-    },
-    {
-      "id": 2,
-      "name": "yar",
-      "resp": "r1",
-      "units": "3",
-      "desc": "56",
-      "staus": "gg",
-      "color": "ff"
-    },
-    {
-      "status": "1",
-      "name": "h",
-      "desc": "r",
-      "resp": "d",
-      "unit": "3",
-      "color": "4",
-      "id": 3
-    },
-    {
-      "status": "123",
-      "name": "dss",
-      "desc": "123",
-      "resp": "123",
-      "unit": "123",
-      "color": "123",
-      "id": 4
-    },
-    {
-      "status": "טיוטה",
-      "name": "abc",
-      "desc": "def",
-      "resp": "ghi",
-      "unit": "456",
-      "color": "blue",
-      "id": 5
+      "status": "4",
+      "name": "1",
+      "desc": "2",
+      "resp": "3",
+      "unit": "6",
+      "color": "7",
+      "id": 1
     }
   ]
 }

@@ -12,7 +12,6 @@ import 'hammerjs';
 import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {DashboardTemplateComponent} from "./components/dashboard/dashboard.component";
 import { NavigationFrameComponent } from './components/unitsNav/navigation-frame.component';
-import {DashboardProductComponent} from "./components/dashboard-product/dashboard-product.component";
 import {TreeModule} from "angular2-tree-component";
 import { TreeComponent } from './components/tree/tree.component';
 import { GridComponent } from './components/grid/grid.component';
@@ -27,6 +26,7 @@ import { StoreModule } from '@ngrx/store';
 import {RouterStoreModule} from "@ngrx/router-store";
 import {Effect, EffectsModule} from "@ngrx/effects";
 import {LoadProcessesEffectService} from "./store/effects/load-processes-effect.service";
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 
@@ -40,7 +40,6 @@ import {LoadProcessesEffectService} from "./store/effects/load-processes-effect.
     DashboardTemplateComponent,
     NavigationFrameComponent,
 
-    DashboardProductComponent,
     TreeComponent,
     GridComponent,
     ProcessesGridComponent,
@@ -62,7 +61,8 @@ import {LoadProcessesEffectService} from "./store/effects/load-processes-effect.
     RouterModule.forRoot(AppRoutes),
     NgxChartsModule,
     TreeModule,
-    DataTableModule,SharedModule,ReactiveFormsModule, StoreModule.provideStore(reducer),RouterStoreModule.connectRouter(),EffectsModule.run(LoadProcessesEffectService)
+    DataTableModule,SharedModule,ReactiveFormsModule, StoreModule.provideStore(reducer),RouterStoreModule.connectRouter(),EffectsModule.run(LoadProcessesEffectService),
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
 
 
 

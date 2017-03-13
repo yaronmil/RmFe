@@ -4,6 +4,7 @@ import * as processesActions from "../actions/processesActions"
 import {ProcessesService} from "../../services/process.service";
 import {Observable} from "rxjs";
 import {Action} from "@ngrx/store";
+import {process} from "../../models/bll/process";
 
 @Injectable()
 export class LoadProcessesEffectService {
@@ -21,5 +22,15 @@ export class LoadProcessesEffectService {
     .ofType(processesActions.CREATE_PROCESS)
     .switchMap(action=>this.processService.createProcess(action.payload)).
     map(newProcess=>new processesActions.ProcessCreated(newProcess));
+
+  @Effect()
+  addProcessAndCloseDialog:Observable<Action>=this.action$
+    .ofType(processesActions.PROCESS_MANUALY_CREATED).
+    map(action=>action.payload).mergeMap((process:process)=>{
+      return [
+        new processesActions.CreateAction(process),
+        new processesActions.ProcessDialogClose()
+      ]
+    });
 }
 

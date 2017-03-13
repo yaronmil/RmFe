@@ -6,7 +6,8 @@ import Promise = promise.Promise;
 import {promise} from "selenium-webdriver";
 import {AppState} from "../../../../store/reducers/index";
 import {Store} from "@ngrx/store";
-import {CreateAction} from "../../../../store/actions/processesActions";
+import { ProcessManualyCreated} from "../../../../store/actions/processesActions";
+
 
 @Component({
   selector: 'app-process-dialog',
@@ -26,6 +27,7 @@ export class ProcessDialogComponent {
 
 
     this.statusCtrl = new FormControl();
+
     this.filteredStates = this.statusCtrl.valueChanges
       .startWith(null)
       .map(name => this.filterStates(name));
@@ -53,8 +55,10 @@ export class ProcessDialogComponent {
     return val ? this.states.filter((s) => new RegExp(val, 'gi').test(s)) : this.states;
   }
 
-  save() {
-    this.store.dispatch(new CreateAction(this.processForm.value))
+
+  public  save() {
+    console.log("dsdss");
+    this.store.dispatch(new ProcessManualyCreated(this.processForm.value))
   }
 
   private handleError(error: Response | any) {
