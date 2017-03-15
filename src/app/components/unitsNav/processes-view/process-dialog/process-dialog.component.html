@@ -19,9 +19,15 @@
 
     <p>
       <md-input-container class="example-full-width">
-        <input mdInput placeholder="אחראי"  formControlName="resp">
+        <input mdInput placeholder="אחראי" [mdAutocomplete]="users" formControlName="resp">
 
       </md-input-container>
+      <md-autocomplete  #users="mdAutocomplete" [displayWith]="displayFn" >
+        <md-option *ngFor="let resp of filteredResp | async" [value]="resp" >
+          {{ resp |userFullNamePipe }}
+        </md-option>
+      </md-autocomplete>
+
     </p>
     <p>
       <md-input-container>

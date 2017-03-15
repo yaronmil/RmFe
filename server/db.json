@@ -30,12 +30,12 @@
   ],
   "users": [
     {
-      "id":"1",
+      "id":1,
       "firstName":"ירון",
       "lastName":"מילשטיין"
     },
     {
-      "id":"2",
+      "id":2,
       "firstName":"מנדי",
       "lastName":"זילברשטרום"
     }

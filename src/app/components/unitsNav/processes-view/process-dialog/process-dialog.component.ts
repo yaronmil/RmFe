@@ -1,34 +1,45 @@
-import {Component, OnInit} from '@angular/core';
-import {MdDialogRef} from '@angular/material';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {Http, RequestOptions, Headers, Response} from '@angular/http';
 import Promise = promise.Promise;
 import {promise} from "selenium-webdriver";
-import {AppState} from "../../../../store/reducers/index";
+import {AppState, getUsersList} from "../../../../store/reducers/index";
 import {Store} from "@ngrx/store";
-import {ProcessManualyCreated, ProcessDialogClose} from "../../../../store/actions/processesActions";
+import {ProcessManualyCreated, ProcessDialogClose} from "../../../../store/actions/processesactions";
+import {LoadUsersAction} from "../../../../store/actions/usersactions";
+import {user} from "../../../../models/shared/user";
+import {userFullNamePipe} from "../../../../pipes/userFullNamePipe";
 
 
 @Component({
   selector: 'app-process-dialog',
   templateUrl: './process-dialog.component.html',
-  styleUrls: ['./process-dialog.component.css']
+  styleUrls: ['./process-dialog.component.css'],
+  providers: [userFullNamePipe]
 })
 export class ProcessDialogComponent {
   statusCtrl: FormControl;
   filteredStates: any;
+  filteredResp:any;
   processForm: any;
+  states = [
+    'טיוטה',
+    'ממתין לאישור',
+    'מאושר'
+  ];
 
-  constructor(public dialogRef: MdDialogRef<ProcessDialogComponent>,
-              private store: Store<AppState>,
-              public http: Http) {
+  constructor(private store: Store<AppState>,private usersFullNamePipe:userFullNamePipe) {
 
+    /*if(this.store.select(getUsersList))*/
+    store.dispatch(new LoadUsersAction())
 
     this.statusCtrl = new FormControl();
-
     this.filteredStates = this.statusCtrl.valueChanges
       .startWith(null)
       .map(name => this.filterStates(name));
+
+    this.filteredResp = this.statusCtrl.valueChanges
+      .startWith(null)
+      .switchMap(name=> this.filterResp(name));
 
     this.processForm = new FormGroup({
       status: this.statusCtrl,
@@ -42,39 +53,29 @@ export class ProcessDialogComponent {
   }
 
 
-  states = [
-    'טיוטה',
-    'ממתין לאישור',
-    'מאושר'
-  ];
+  private displayFn(user: user): string {
 
+    var x=new userFullNamePipe();
+    return   x.transform(user);
+  }
 
-  filterStates(val: string) {
+  private filterStates(val: string) {
     return val ? this.states.filter((s) => new RegExp(val, 'gi').test(s)) : this.states;
   }
 
+  private filterResp(val: string) {
+    return  val? this.store.select(getUsersList) :this.store.select(getUsersList);
+  }
 
   public  save() {
     console.log("saving");
     this.store.dispatch(new ProcessManualyCreated(this.processForm.value))
   }
+
   public close() {
     console.log("closing dialog");
     this.store.dispatch(new ProcessDialogClose());
   }
 
-  private handleError(error: Response | any) {
-    /* // In a real world app, we might use a remote logging infrastructure
-     let errMsg: string;
-     if (error instanceof Response) {
-     const body = error.json() || '';
-     const err = body.error || JSON.stringify(body);
-     errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-     } else {
-     errMsg = error.message ? error.message : error.toString();
-     }
-     console.error(errMsg);
-     return Promise.reject(errMsg);*/
-  }
 
 }

@@ -3,13 +3,10 @@
  */
 
 import {process} from "../../models/shared/process";
-import * as processesActions      from "../actions/processesActions"
+import * as processesActions      from "../actions/processesactions"
 import {Action} from '@ngrx/store';
-import {Actions} from "../actions/processesActions";
-import {MdDialog} from '@angular/material';
-import {ProcessDialogComponent} from "../../components/unitsNav/processes-view/process-dialog/process-dialog.component";
-import {ConfirmDialog} from "primeng/components/confirmdialog/confirmdialog";
-import {MdDialogRef} from '@angular/material';
+import {Actions} from "../actions/processesactions";
+
 
 export interface State {
   processesList: process[];

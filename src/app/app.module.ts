@@ -29,6 +29,9 @@ import { ProcessesEffectService} from "./store/effects/processes-effects.service
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {OrgUnitsService} from "./services/orgunits.service";
 import {OrgUnitsEffectService} from "./store/effects/orgunits-effects.service";
+import {UsersService} from "./services/users.service";
+import {UsersEffectService} from "./store/effects/users-effects.service";
+import {userFullNamePipe} from "./pipes/userFullNamePipe";
 
 
 
@@ -49,6 +52,7 @@ import {OrgUnitsEffectService} from "./store/effects/orgunits-effects.service";
     NavScrollComponent,
     ProcessesViewComponent,
     ProcessDialogComponent,
+    userFullNamePipe
 
 
 
@@ -67,13 +71,14 @@ import {OrgUnitsEffectService} from "./store/effects/orgunits-effects.service";
     DataTableModule,SharedModule,ReactiveFormsModule, StoreModule.provideStore(reducer),RouterStoreModule.connectRouter(),
     EffectsModule.run(ProcessesEffectService),
     EffectsModule.run(OrgUnitsEffectService),
+    EffectsModule.run(UsersEffectService),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
 
 
 
 
   ],
-  providers: [ProcessesService,OrgUnitsService],
+  providers: [ProcessesService,OrgUnitsService,UsersService],
   entryComponents: [
     ProcessDialogComponent
   ],

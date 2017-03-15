@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect} from "@ngrx/effects";
-import * as processesActions from "../actions/processesActions"
+import * as processesActions from "../actions/processesactions"
 import {ProcessesService} from "../../services/process.service";
 import {Observable} from "rxjs";
 import {Action} from "@ngrx/store";

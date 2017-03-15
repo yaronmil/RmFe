@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {process} from "../../models/shared/process";
-import {gridColumn} from "../../models/client/gridColumn";
+import {gridColumn} from "../../models/client/gridcolumn";
 import {Observable} from "rxjs";
 import * as appStore from '../../store/reducers';
 
-import * as processesActions from '../../store/actions/processesActions';
+import * as processesActions from '../../store/actions/processesactions';
 
 import {Store} from "@ngrx/store";
 

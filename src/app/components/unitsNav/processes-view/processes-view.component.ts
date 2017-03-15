@@ -4,7 +4,7 @@ import {MdDialog,MdDialogRef} from '@angular/material';
 import {ProcessDialogComponent} from "./process-dialog/process-dialog.component";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../../store/reducers/index";
-import {ProcessDialogOpen} from "../../../store/actions/processesActions";
+import {ProcessDialogOpen} from "../../../store/actions/processesactions";
 import {Observable} from "rxjs";
 
 import * as appStore from '../../../store/reducers';
