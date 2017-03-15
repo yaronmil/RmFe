@@ -2,7 +2,7 @@
  * Created by Yaron on 3/8/2017.
  */
 
-import {process} from "../../models/bll/process";
+import {process} from "../../models/shared/process";
 import * as processesActions      from "../actions/processesActions"
 import {Action} from '@ngrx/store';
 import {Actions} from "../actions/processesActions";

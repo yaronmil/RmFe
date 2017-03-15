@@ -6,6 +6,7 @@ import {Store} from "@ngrx/store";
 import {AppState} from "../../../store/reducers/index";
 import {ProcessDialogOpen} from "../../../store/actions/processesActions";
 import {Observable} from "rxjs";
+
 import * as appStore from '../../../store/reducers';
 
 
@@ -41,12 +42,10 @@ export class ProcessesViewComponent implements OnInit {
   colorSchemeDark: any = {
     domain: ['#5E35B1', '#0277BD', '#00695C', '#558B2F', '#9E9D24'],
   };
-  public  save1() {
-    console.log("dsdss");
-    /*this.store.dispatch(new CreateActionDialogClose(this.processForm.value))*/
-  }
+
   constructor(public dialog: MdDialog,
               public store: Store<AppState>) {
+
     store.select(appStore.getDialogOpen).do(
       ret => {
         ret? this.popDialog():this.closeDialog();
@@ -71,7 +70,8 @@ export class ProcessesViewComponent implements OnInit {
 
     this.dialogRef= this.dialog.open(ProcessDialogComponent, {
         height: '600px',
-        width: '600px'
+        width: '600px',
+        disableClose:true
       }
     );
   }

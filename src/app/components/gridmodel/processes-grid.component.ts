@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {process} from "../../models/bll/process";
-import {gridColumn} from "../../models/gridColumn";
+import {process} from "../../models/shared/process";
+import {gridColumn} from "../../models/client/gridColumn";
 import {Observable} from "rxjs";
 import * as appStore from '../../store/reducers';
 

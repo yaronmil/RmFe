@@ -1,5 +1,7 @@
 {
   "/api/": "/",
-  "/processes": "/processes"
+  "/processes": "/processes",
+  "/users": "/users",
+  "/orgUnits": "/orgUnits"
 
 }

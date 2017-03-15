@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, ChangeDetectionStrategy} from '@angular/core';
 import {ITdDataTableColumn, TdDialogService} from "@covalent/core";
 import {LazyLoadEvent} from "primeng/components/common/api";
-import {gridColumn} from "../../models/gridColumn";
+import {gridColumn} from "../../models/client/gridColumn";
 
 @Component({
   selector: 'app-grid',

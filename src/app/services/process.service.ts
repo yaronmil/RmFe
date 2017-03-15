@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Http, Headers, RequestOptions} from "@angular/http";
 import {Observable} from "rxjs";
-import {process} from "../models/bll/process";
+import {process} from "../models/shared/process";
 
 
 @Injectable()

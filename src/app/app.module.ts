@@ -13,7 +13,7 @@ import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {DashboardTemplateComponent} from "./components/dashboard/dashboard.component";
 import { NavigationFrameComponent } from './components/unitsNav/navigation-frame.component';
 import {TreeModule} from "angular2-tree-component";
-import { TreeComponent } from './components/tree/tree.component';
+import { TreeComponent1 } from './components/tree/tree.component';
 import { GridComponent } from './components/grid/grid.component';
 import {DataTableModule,SharedModule} from 'primeng/primeng';
 import { ProcessesGridComponent } from './components/gridmodel/processes-grid.component';
@@ -25,8 +25,11 @@ import { reducer } from './store/reducers';
 import { StoreModule } from '@ngrx/store';
 import {RouterStoreModule} from "@ngrx/router-store";
 import {Effect, EffectsModule} from "@ngrx/effects";
-import {LoadProcessesEffectService} from "./store/effects/load-processes-effect.service";
+import { ProcessesEffectService} from "./store/effects/processes-effects.service";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {OrgUnitsService} from "./services/orgunits.service";
+import {OrgUnitsEffectService} from "./store/effects/orgunits-effects.service";
+
 
 
 
@@ -40,7 +43,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     DashboardTemplateComponent,
     NavigationFrameComponent,
 
-    TreeComponent,
+    TreeComponent1,
     GridComponent,
     ProcessesGridComponent,
     NavScrollComponent,
@@ -61,14 +64,16 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     RouterModule.forRoot(AppRoutes),
     NgxChartsModule,
     TreeModule,
-    DataTableModule,SharedModule,ReactiveFormsModule, StoreModule.provideStore(reducer),RouterStoreModule.connectRouter(),EffectsModule.run(LoadProcessesEffectService),
+    DataTableModule,SharedModule,ReactiveFormsModule, StoreModule.provideStore(reducer),RouterStoreModule.connectRouter(),
+    EffectsModule.run(ProcessesEffectService),
+    EffectsModule.run(OrgUnitsEffectService),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
 
 
 
 
   ],
-  providers: [ProcessesService],
+  providers: [ProcessesService,OrgUnitsService],
   entryComponents: [
     ProcessDialogComponent
   ],

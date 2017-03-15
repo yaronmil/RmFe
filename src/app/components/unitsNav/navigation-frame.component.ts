@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewEncapsulation, ViewChild} from '@angular/core';
 import {TdLayoutComponent} from "@covalent/core";
 import {single, multi} from '../../services/data';
-import {process} from "../../models/bll/process";
+import {process} from "../../models/shared/process";
 export interface tile {
   header: string
   colspan: number

@@ -6,7 +6,7 @@ import Promise = promise.Promise;
 import {promise} from "selenium-webdriver";
 import {AppState} from "../../../../store/reducers/index";
 import {Store} from "@ngrx/store";
-import { ProcessManualyCreated} from "../../../../store/actions/processesActions";
+import {ProcessManualyCreated, ProcessDialogClose} from "../../../../store/actions/processesActions";
 
 
 @Component({
@@ -19,11 +19,9 @@ export class ProcessDialogComponent {
   filteredStates: any;
   processForm: any;
 
-  constructor(
-              public dialogRef: MdDialogRef<ProcessDialogComponent>,
-              private store:Store<AppState>,
+  constructor(public dialogRef: MdDialogRef<ProcessDialogComponent>,
+              private store: Store<AppState>,
               public http: Http) {
-
 
 
     this.statusCtrl = new FormControl();
@@ -57,8 +55,12 @@ export class ProcessDialogComponent {
 
 
   public  save() {
-    console.log("dsdss");
+    console.log("saving");
     this.store.dispatch(new ProcessManualyCreated(this.processForm.value))
+  }
+  public close() {
+    console.log("closing dialog");
+    this.store.dispatch(new ProcessDialogClose());
   }
 
   private handleError(error: Response | any) {
