@@ -8,6 +8,7 @@ import * as fromProcesses from './processesReducer';
 import * as fromOrgUnits from './orgunitsReducer';
 import * as fromUsers from './usersReducer';
 import {RouterState, routerReducer} from "@ngrx/router-store";
+import {orgUnit} from "../../models/shared/orgUnit";
 
 
 
@@ -44,7 +45,8 @@ export const getDialogOpen = createSelector(getProcessesState, fromProcesses.get
 
 /*orgunits*/
 export const getOrgUnitsState = (state: AppState) => state.orgUnits;
-export const getOrgUnitsList = createSelector(getOrgUnitsState, fromOrgUnits.getorgUnitsList);
+/*export const getOrgUnitsList = createSelector<AppState,orgUnit[],fromOrgUnits.State>( getOrgUnitsState, fromOrgUnits.getorgUnitsList)*/
+export const getOrgUnitsList = createSelector ( getOrgUnitsState, fromOrgUnits.getorgUnitsList)
 export const getOrgUnitsTree = createSelector(getOrgUnitsState,fromOrgUnits.getorgUnitsTree);
 
 /*users*/

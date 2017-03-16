@@ -26,6 +26,10 @@ export class ProcessesGridComponent implements OnInit {
       field: "name"
     },
     {
+      header: "מפה",
+      field: "map"
+    },
+    {
       header: "יחידות",
       field: "units"
     },

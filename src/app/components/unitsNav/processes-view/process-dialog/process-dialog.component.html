@@ -1,5 +1,5 @@
 <h2 md-dialog-title dir="rtl">הוסף תהליך</h2>
-<md-dialog-content dir="rtl">
+<md-dialog-content dir="rtl" style="max-height: 800px;">
 
   <form  [formGroup]="processForm" novalidate>
     <p>
@@ -15,6 +15,14 @@
                   mdTextareaAutosize
                   placeholder="תיאור תהליך"  formControlName="desc"></textarea>
       </md-input-container>
+    </p>
+
+    <p>
+      שייך למפה
+      <md-radio-group value="1"  formControlName="map">
+        <md-radio-button value="1">כן</md-radio-button>
+        <md-radio-button value="2">לא</md-radio-button>
+      </md-radio-group>
     </p>
 
     <p>
@@ -40,21 +48,54 @@
         </md-option>
       </md-autocomplete>
     </p>
+
+
+
+
     <p>
-      <md-input-container class="example-full-width">
-        <input mdInput placeholder="חטיבה">
+      <md-input-container>
+        <input mdInput placeholder="חטיבה" [mdAutocomplete]="department" formControlName="department" >
+      </md-input-container>
+
+      <md-autocomplete #department [displayWith]="getOrgUnitName"   >
+        <md-option *ngFor="let department of filteredDepartments | async" [value]="department"  (onSelect)="onDepartmentSelect(department)"  >
+          {{ department.name }}
+        </md-option>
+      </md-autocomplete>
+
+      <md-input-container  >
+        <input mdInput placeholder="יחידה"  [mdAutocomplete]="unit" formControlName="unit">
 
       </md-input-container>
-      <md-input-container class="example-full-width">
-        <input mdInput placeholder="יחידה"  formControlName="unit">
 
-      </md-input-container>
+      <md-autocomplete #unit [displayWith]="getOrgUnitName"  >
+        <md-option *ngFor="let unit of filteredUnits | async" [value]="unit">
+          {{ unit.name }}
+        </md-option>
+      </md-autocomplete>
+
+
     </p>
+
     <p>
-      <md-input-container class="example-full-width"  >
-        <input mdInput placeholder="צבע" formControlName="color">
+
+
+      <md-select placeholder="צבע"  formControlName="color">
+        <md-option *ngFor="let color of colors" [value]="color">
+          {{color}}
+        </md-option>
+      </md-select>
+
+
+   <!--   <md-input-container  >
+        <input mdInput placeholder="צבע"  [mdAutocomplete]="color"  formControlName="color">
 
       </md-input-container>
+      <md-autocomplete #color   >
+        <md-option *ngFor="let color of filteredColors | async" [value]="color">
+          {{ color }}
+        </md-option>
+      </md-autocomplete>-->
 
     </p>
     <p>
