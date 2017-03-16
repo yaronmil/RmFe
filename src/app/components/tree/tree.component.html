@@ -1,4 +1,4 @@
-<tree-root [nodes]="nodes" class="rtl-tree">
+<tree-root *ngIf="nodes.length>0" [nodes]="nodes" class="rtl-tree"  >
   <template #treeNodeTemplate let-node="node" let-index="index">
     <div style="width:150px;">
       <md-icon *ngIf="node.data.icon" class="md-18">{{node.data.icon}}</md-icon>

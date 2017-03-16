@@ -26,46 +26,170 @@
       "unit": null,
       "color": null,
       "id": 3
+    },
+    {
+      "status": "ממתין לאישור",
+      "name": null,
+      "desc": null,
+      "resp": {
+        "id": 2,
+        "firstName": "מנדי",
+        "lastName": "זילברשטרום"
+      },
+      "unit": null,
+      "color": null,
+      "id": 4
     }
   ],
   "users": [
     {
-      "id":1,
-      "firstName":"ירון",
-      "lastName":"מילשטיין"
+      "id": 1,
+      "firstName": "ירון",
+      "lastName": "מילשטיין"
     },
     {
-      "id":2,
-      "firstName":"מנדי",
-      "lastName":"זילברשטרום"
+      "id": 2,
+      "firstName": "מנדי",
+      "lastName": "זילברשטרום"
     }
   ],
   "orgUnits": [
     {
-      "id":10,
-      "name":"אופאל",
-      "parentId":1,
-      "icon":null
+      "id": 1,
+      "parentId": null,
+      "name": "עמיתים",
+      "selected": true,
+      "isExpanded": true,
+      "hasChildren":true,
+      "icon": "account_balance",
+      "children": []
+    },
+    {
+      "id": 10,
+      "name": "אופאל",
+      "parentId": 1,
+      "selected": false,
+      "isExpanded": true,
+      "icon": "developer_mode",
+      "children": []
+    },
+    {
+      "id": 20,
+      "name": "כספים",
+      "parentId": 10,
+      "isExpanded": false,
+      "icon": "attach_money",
+      "children": []
+    },
+    {
+      "id": 29,
+      "name": "אבטחת מידע",
+      "parentId": 10,
+      "isExpanded": false,
+      "icon": "attach_money",
+      "children": []
 
     },
     {
-      "id":20,
-      "name":"כספים",
-      "parentId":10,
-      "icon":"attach_money"
-    }
-    ,
-    {
-      "id":29,
-      "name":"אבטחת מידע",
-      "parentId":10,
-      "icon":"attach_money"
+      "id": 30,
+      "name": "תוכנה",
+      "parentId": 10,
+      "isExpanded": false,
+      "icon": "developer_mode",
+      "children": []
     },
     {
-      "id":30,
-      "name":"תוכנה",
-      "parentId":10,
-      "icon":"developer_mode"
-    }
+      "id": 31,
+      "parentId": 10,
+      "name": "פיתוח",
+      "icon": "developer_board",
+      "children": []
+    },
+    {
+      "id": 32,
+      "parentId": 10,
+      "name": "תשתיות טכנולוגיות",
+      "icon": "settings_input_composite",
+      "children": []
+    },
+    {
+      "id": 33,
+      "parentId": 10,
+      "name": "תפעול",
+      "icon": "settings",
+      "children": []
+
+    },
+
+    {
+      "id": 4,
+      "parentId": 1,
+      "name": "ביקורת פנימית",
+      "icon": "developer_mode",
+      "children": []
+    },
+    {
+      "id": 4,
+      "parentId": 1,
+      "name": "השקעות",
+      "isExpanded": true,
+      "icon": "developer_mode",
+      "children": []
+
+    },
+
+      {
+        "id": 40,
+        "parentId": 4,
+        "name": "תחום א\"גח",
+        "icon": "developer_mode",
+        "children": []
+
+      },
+      {
+        "id": 41,
+        "parentId": 4,
+        "name": "תחום בקרה וניתוח השקעות",
+        "icon": "developer_mode",
+        "children": []
+      },
+      {
+        "id": 42,
+        "parentId": 4,
+        "name": "תחום מניות",
+        "icon": "developer_mode",
+
+        "children": []
+      },
+      {
+        "id": 43,
+        "parentId": 4,
+        "name": "תחום לא סחיר",
+        "icon": "developer_mode",
+        "children": []
+      },
+      {
+        "id": 44,
+        "parentId": 4,
+        "icon": "developer_mode",
+        "name": "תחום מחקר",
+        "children": []
+      },
+      {
+        "id": 45,
+        "parentId": 4,
+        "name": "תחום ני\"ע וקופ\"ג",
+        "icon": "developer_mode",
+        "children": []
+      },
+      {
+        "id": 46,
+        "parentId": 4,
+        "name": "יועצת משפטית",
+        "icon": "developer_mode",
+        "children": []
+      }
+
+
   ]
 }
