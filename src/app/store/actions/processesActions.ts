@@ -14,6 +14,8 @@ export const PROCESS_MANUALY_CREATED =  '[Processes] PROCESS MANUALY CREATED';
 export const  PROCESS_CREATED =  '[Processes] PROCESS CREATED';
 export const  PROCESS_DIALOG_OPEN =  '[Processes] PROCESS DIALOG OPEN';
 export const  PROCESS_DIALOG_CLOSE =  '[Processes] PROCESS DIALOG CLOSE';
+export const  DELETE_PROCESS =  '[Processes] DELETE PROCESS';
+export const  PROCESS_DELETED =  '[Processes] PROCESS DELETED';
 
 
 export class LoadProcessesAction implements  Action {
@@ -24,6 +26,20 @@ export class LoadProcessesAction implements  Action {
 
   }
 
+}
+export class DeleteProcess implements  Action {
+
+  readonly type = DELETE_PROCESS;
+  constructor(public payload:process) {
+
+  }
+}
+export class ProcessDeleted implements  Action {
+
+  readonly type = PROCESS_DELETED;
+  constructor() {
+
+  }
 }
 export class ProcessesLoaded implements  Action {
 

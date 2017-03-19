@@ -14,7 +14,6 @@ import {DashboardTemplateComponent} from "./components/dashboard/dashboard.compo
 import { NavigationFrameComponent } from './components/unitsNav/navigation-frame.component';
 import {TreeModule} from "angular2-tree-component";
 import { TreeComponent1 } from './components/tree/tree.component';
-import { GridComponent } from './components/grid/grid.component';
 import {DataTableModule,SharedModule} from 'primeng/primeng';
 import { ProcessesGridComponent } from './components/gridmodel/processes-grid.component';
 import { NavScrollComponent } from './components/unitsNav/nav-scroll/nav-scroll.component';
@@ -47,7 +46,6 @@ import {userFullNamePipe} from "./pipes/userFullNamePipe";
     NavigationFrameComponent,
 
     TreeComponent1,
-    GridComponent,
     ProcessesGridComponent,
     NavScrollComponent,
     ProcessesViewComponent,

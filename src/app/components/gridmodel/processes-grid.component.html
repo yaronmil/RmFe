@@ -1,0 +1,64 @@
+<!--
+<p-dataTable [value]="data" dir="rtl"  [rows]="10" [paginator]="true" >
+ valt;!&ndash;scrollable="true" scrollHeight="100px"&ndash;&gt;
+ &lt;!&ndash; <p-header>Vertical</p-header>&ndash;&gt;
+  <p-column *ngFor="let col of columns"  [field]="col.field" [header]="col.header"></p-column>
+
+</p-dataTable>
+
+
+&lt;!&ndash;<div *ngFor="let col of columns"   >{{col.field}}</div>&ndash;&gt;
+
+-->
+
+
+
+<td-data-table
+  [data]="processesList$ | async"
+  [columns]="processGridColumns"
+  (rowSelect)="selectEvent($event)"
+   [multiple]="false"
+>
+  <template tdDataTableTemplate="editButton" let-value="value" let-row="row" let-column="column">
+  <div layout="row">
+    <button md-button>
+      <md-icon >edit</md-icon>
+    </button>
+  </div>
+</template>
+  <template tdDataTableTemplate="delButton" let-value="value" let-row="row" let-column="column">
+    <div layout="row">
+      <button md-button (click)="deleteRow(row)">
+        <md-icon >delete</md-icon>
+      </button>
+    <!--  <button md-mini-fab ><md-icon >delete</md-icon></button>-->
+    </div>
+  </template>
+</td-data-table>
+
+
+
+
+
+
+
+
+<!--<table td-data-table [selectable]="true" (rowSelect)="selectEvent($event)">
+
+  <th td-data-table-column [sortable]="true"
+      *ngFor="let column of columns"
+  >
+    {{column.header}}
+  </th>
+  <tr td-data-table-row *ngFor="let row of data"   >
+
+    <td td-data-table-cell *ngFor="let column of columns"  >
+      {{ row[column.field]}}
+    </td>
+
+  </tr>
+</table>-->
+<td-paging-bar dir="ltr" #pagingBar   [total]="totalRecords"  >
+מציג <span hide-xs>10 מתוך 500</span>
+</td-paging-bar>
+

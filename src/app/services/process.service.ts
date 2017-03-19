@@ -20,5 +20,11 @@ export class ProcessesService {
 
     return this.http.post("api/processes", process, options).map(res=>res.json());
   }
+  DeleteProcess(process:process):Observable<boolean>{
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.delete(`api/processes/${process.id}` ).map(res=>true);
+  }
 
 }

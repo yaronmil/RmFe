@@ -35,6 +35,12 @@ export function reducer(state = initialState, action: Actions): State {
       const processesList = [...state.processesList, newProcess]
       return Object.assign({}, state, {processesList});
     }
+    case processesActions.DELETE_PROCESS:
+      const ProcessToDelete = (<processesActions.CreateAction> action).payload;
+
+      return Object.assign({}, state, {processesList:state.processesList.filter(pl=>pl.id!=ProcessToDelete.id)});
+    case processesActions.PROCESS_DELETED:
+    return state;
     case processesActions.PROCESSES_LOADED: {
       const processesList = (action as Action).payload;
       return Object.assign({}, state, {processesList});

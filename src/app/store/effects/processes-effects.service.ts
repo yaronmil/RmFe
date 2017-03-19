@@ -31,5 +31,10 @@ export class ProcessesEffectService {
         new processesActions.ProcessDialogClose()
       ]
     });
+
+  @Effect()
+  DeleteProcess: Observable<Action> = this.action$
+    .ofType(processesActions.DELETE_PROCESS)
+    .switchMap(action => this.processService.DeleteProcess(action.payload)).map(deleteResult => new processesActions.ProcessDeleted());
 }
 
