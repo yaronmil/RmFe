@@ -36,5 +36,10 @@ export class ProcessesEffectService {
   DeleteProcess: Observable<Action> = this.action$
     .ofType(processesActions.DELETE_PROCESS)
     .switchMap(action => this.processService.DeleteProcess(action.payload)).map(deleteResult => new processesActions.ProcessDeleted());
+
+  @Effect()
+  editProcess: Observable<Action> = this.action$
+    .ofType(processesActions.PROCESS_EDIT_SAVE)
+    .switchMap(action => this.processService.UpdateProcess(action.payload)).map(updatedProcess => new processesActions.EditedProcessSaved(updatedProcess));
 }
 

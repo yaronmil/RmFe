@@ -1,0 +1,22 @@
+<div [formGroup]="unitForm">
+  <md-input-container>
+    <input mdInput placeholder="חטיבה" [mdAutocomplete]="department" formControlName="department" >
+  </md-input-container>
+
+  <md-autocomplete #department [displayWith]="getOrgUnitName"   >
+    <md-option *ngFor="let department of filteredDepartments | async" [value]="department"  (onSelect)="onDepartmentSelect(department)"  >
+      {{ department.name }}
+    </md-option>
+  </md-autocomplete>
+
+  <md-input-container  >
+    <input mdInput placeholder="יחידה"  [mdAutocomplete]="unit" formControlName="unit">
+
+  </md-input-container>
+
+  <md-autocomplete #unit [displayWith]="getOrgUnitName"  >
+    <md-option *ngFor="let unit of filteredUnits | async" [value]="unit">
+      {{ unit.name }}
+    </md-option>
+  </md-autocomplete>
+</div>

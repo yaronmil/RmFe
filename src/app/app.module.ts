@@ -31,6 +31,8 @@ import {OrgUnitsEffectService} from "./store/effects/orgunits-effects.service";
 import {UsersService} from "./services/users.service";
 import {UsersEffectService} from "./store/effects/users-effects.service";
 import {userFullNamePipe} from "./pipes/userFullNamePipe";
+import {orgUnitsPipe} from "./pipes/orgunits-pipe";
+import { RelatedUnitsComponent } from './components/unitsNav/processes-view/process-dialog/related-units/related-units.component';
 
 
 
@@ -50,7 +52,9 @@ import {userFullNamePipe} from "./pipes/userFullNamePipe";
     NavScrollComponent,
     ProcessesViewComponent,
     ProcessDialogComponent,
-    userFullNamePipe
+    userFullNamePipe,
+    orgUnitsPipe,
+    RelatedUnitsComponent
 
 
 

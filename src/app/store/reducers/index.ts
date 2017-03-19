@@ -41,7 +41,8 @@ export function reducer(state: any, action: any) {
 /*processes*/
 export const getProcessesState = (state: AppState) => state.processes;
 export const getProcessesList = createSelector(getProcessesState, fromProcesses.getProcessesList);
-export const getDialogOpen = createSelector(getProcessesState, fromProcesses.getDialogOpen);
+export const getProcessesDialogState = createSelector(getProcessesState, fromProcesses.getProcessesDialogState);
+export const getProcessToEdit = createSelector(getProcessesState, fromProcesses.getProcessToEdit);
 
 /*orgunits*/
 export const getOrgUnitsState = (state: AppState) => state.orgUnits;

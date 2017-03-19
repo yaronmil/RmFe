@@ -1,16 +1,20 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, FormBuilder} from "@angular/forms";
 import Promise = promise.Promise;
 import {promise} from "selenium-webdriver";
-import {AppState, getUsersList, getOrgUnitsList} from "../../../../store/reducers/index";
+
+import * as appStore from '../../../../store/reducers';
 import {Store} from "@ngrx/store";
-import {ProcessManualyCreated, ProcessDialogClose} from "../../../../store/actions/processesactions";
+import {
+  ProcessManualyCreated, ProcessDialogClose,
+  EditedProcessSaved, ProcessEditSave
+} from "../../../../store/actions/processesactions";
 import {LoadUsersAction} from "../../../../store/actions/usersactions";
 import {user} from "../../../../models/shared/user";
 import {userFullNamePipe} from "../../../../pipes/userFullNamePipe";
-import {getorgUnitsList} from "../../../../store/reducers/orgunitsReducer";
 import {orgUnit} from "../../../../models/shared/orgUnit";
 import {Observable} from "rxjs";
+import {process} from "../../../../models/shared/process";
 
 
 @Component({
@@ -20,19 +24,20 @@ import {Observable} from "rxjs";
   providers: [userFullNamePipe]
 })
 export class ProcessDialogComponent {
+  isEditMode: boolean = false;
   statusCtrl: FormControl;
   colorCtrl: FormControl;
-  departmentCtrl: FormControl;
   unitCtrl: FormControl;
+  departmentCtrl: FormControl;
 
   filteredStates: any;
-  filteredColors:any;
+  filteredColors: any;
   filteredDepartments: any;
   filteredResp: any;
 
-  filteredUnits:Observable<any>;
+  filteredUnits: Observable<any>;
 
-  processForm: any;
+  processForm: FormGroup;
   states = [
     'טיוטה',
     'ממתין לאישור',
@@ -45,10 +50,8 @@ export class ProcessDialogComponent {
   ];
 
 
-  constructor(private store: Store<AppState>, private usersFullNamePipe: userFullNamePipe) {
+  constructor(private store: Store<appStore.AppState>, private formBuilder: FormBuilder) {
 
-    /*if(this.store.select(getUsersList))*/
-    store.dispatch(new LoadUsersAction())
 
     this.statusCtrl = new FormControl();
     this.colorCtrl = new FormControl();
@@ -70,12 +73,9 @@ export class ProcessDialogComponent {
       .switchMap(name => this.filterdUnits(name));
 
 
-
-
     this.filteredDepartments = this.departmentCtrl.valueChanges
       .startWith(null)
       .switchMap(name => this.filterdDepartments(name));
-
 
 
     this.filteredResp = this.statusCtrl.valueChanges
@@ -83,17 +83,75 @@ export class ProcessDialogComponent {
       .switchMap(name => this.filterResp(name));
 
 
-    this.processForm = new FormGroup({
-      status: this.statusCtrl,
-      name: new FormControl(),
-      desc: new FormControl(),
-      resp: new FormControl(),
-      unit: this.unitCtrl,
-      color: this.colorCtrl,
-      map: new FormControl(),
-      department: this.departmentCtrl
-    });
+    this.createForm();
+
+    store.select(appStore.getProcessToEdit).do(
+      state => state ? this.setvalues(state) : null).subscribe();
+    store.dispatch(new LoadUsersAction())
   }
+
+  private createForm() {
+      this.processForm = this.formBuilder.group({
+      id: [],
+      status: this.statusCtrl,
+      name: [],
+      desc: [],
+      resp: [],
+      color: this.colorCtrl,
+      units: this.formBuilder.array([
+        this.formBuilder.group({
+          department:this.departmentCtrl,
+          unit:this.unitCtrl
+        }),
+        this.formBuilder.group({
+          department:this.departmentCtrl,
+          unit:this.unitCtrl
+        })
+      ]),
+      map: [],
+
+    })
+
+    /* this.processForm = new FormGroup({
+     id:new FormControl(),
+     status: this.statusCtrl,
+     name: new FormControl(),
+     desc: new FormControl(),
+     resp: new FormControl(),
+     /!*units: this.unitsCtrl,*!/
+     color: this.colorCtrl,
+     map: new FormControl(),
+     department: this.departmentCtrl
+     });*/
+  }
+
+  private units() {
+    return
+  }
+
+  private setvalues(process: process) {
+    this.createForm();
+    this.isEditMode = true;
+    this.processForm.patchValue(process);
+  }
+
+  public  save() {
+    if (this.isEditMode)
+      this.store.dispatch(new ProcessEditSave(this.processForm.value))
+    else
+      this.store.dispatch(new ProcessManualyCreated(this.processForm.value))
+  }
+
+  /*  public close() {
+   console.log("closing dialo1g");
+   this.store.dispatch(new ProcessDialogClose());
+
+   }
+   private closeDialog()
+   {
+
+   }*/
+
 
   private onDepartmentSelect(dep) {
     console.log(dep);
@@ -109,6 +167,7 @@ export class ProcessDialogComponent {
   private filterStates(val: string) {
     return val ? this.states.filter((s) => new RegExp(val, 'gi').test(s)) : this.states;
   }
+
   private filterColors(val: string) {
     return val ? this.colors.filter((s) => new RegExp(val, 'gi').test(s)) : this.colors;
   }
@@ -116,7 +175,7 @@ export class ProcessDialogComponent {
 
   private filterdDepartments(val: string) {
 
-    var selector = this.store.select(getOrgUnitsList).map(orgUnits => orgUnits.filter(ou => ou.parentId == 1))
+    var selector = this.store.select(appStore.getOrgUnitsList).map(orgUnits => orgUnits.filter(ou => ou.parentId == 1))
     return val ?
       selector.map(ou => ou.filter(ou => ou.name.startsWith(val))) :
       selector;
@@ -134,24 +193,20 @@ export class ProcessDialogComponent {
 
     var parent = this.departmentCtrl.value.id;
     console.log(parent);
-    var selector = this.store.select(getOrgUnitsList).map(orgUnits => orgUnits.filter(ou => ou.parentId == parent));
+    var selector = this.store.select(appStore.getOrgUnitsList).map(orgUnits => orgUnits.filter(ou => ou.parentId == parent));
     return val ?
       selector :
       selector.map(orgUnits => orgUnits.filter(ou => ou.name.startsWith(val)));
   }
 
-  private filterResp(val: string) {
-    return val ? this.store.select(getUsersList) : this.store.select(getUsersList);
-  }
+  close() {
 
-  public  save() {
-    console.log("saving");
-    this.store.dispatch(new ProcessManualyCreated(this.processForm.value))
-  }
-
-  public close() {
-    console.log("closing dialog");
     this.store.dispatch(new ProcessDialogClose());
+
+  }
+
+  private filterResp(val: string) {
+    return val ? this.store.select(appStore.getUsersList) : this.store.select(appStore.getUsersList);
   }
 
 

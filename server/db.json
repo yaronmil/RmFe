@@ -1,34 +1,51 @@
 {
   "processes": [
     {
+      "id": 1,
       "status": "טיוטה",
-      "name": "ירון",
-      "desc": "תיאור התהליך",
+      "name": "1",
+      "desc": "2",
       "resp": {
         "id": 1,
         "firstName": "ירון",
         "lastName": "מילשטיין"
       },
-      "unit": {
-        "id": 20,
-        "name": "כספים",
-        "parentId": 10,
-        "isExpanded": false,
-        "icon": "attach_money",
-        "children": []
-      },
       "color": "כתום",
-      "map": "1",
-      "department": {
-        "id": 10,
-        "name": "אופאל",
-        "parentId": 1,
-        "selected": false,
-        "isExpanded": true,
-        "icon": "developer_mode",
-        "children": []
-      },
-      "id": 2
+      "units": [
+        {
+          "department": {
+            "id": 4,
+            "parentId": 1,
+            "name": "ביקורת פנימית",
+            "icon": "developer_mode",
+            "children": []
+          },
+          "unit": {
+            "id": 40,
+            "parentId": 4,
+            "name": "תחום א\"גח",
+            "icon": "developer_mode",
+            "children": []
+          }
+        },
+        {
+          "department": {
+            "id": 4,
+            "parentId": 1,
+            "name": "ביקורת פנימית",
+            "icon": "developer_mode",
+            "children": []
+          },
+          "unit": {
+            "id": 41,
+            "parentId": 4,
+            "name": "תחום בקרה וניתוח השקעות",
+            "icon": "developer_mode",
+            "children": []
+          }
+        }
+      ],
+      "map": "כן"
     }
   ],
   "users": [

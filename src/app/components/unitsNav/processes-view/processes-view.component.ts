@@ -4,10 +4,12 @@ import {MdDialog,MdDialogRef} from '@angular/material';
 import {ProcessDialogComponent} from "./process-dialog/process-dialog.component";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../../store/reducers/index";
-import {ProcessDialogOpen} from "../../../store/actions/processesactions";
+import {ProcessDialogOpenCreate} from "../../../store/actions/processesactions";
 import {Observable} from "rxjs";
 
 import * as appStore from '../../../store/reducers';
+import {OpenCloseEnum} from "../../../../enums/opencloseenum";
+import {process} from "../../../models/shared/process";
 
 
 @Component({
@@ -46,10 +48,13 @@ export class ProcessesViewComponent implements OnInit {
   constructor(public dialog: MdDialog,
               public store: Store<AppState>) {
 
-    store.select(appStore.getDialogOpen).do(
-      ret => {
-        ret? this.popDialog():this.closeDialog();
-      }).subscribe();
+     store.select(appStore.getProcessesDialogState).do(
+     state => {
+     state==OpenCloseEnum.close? this.closeDialog():this.popDialog();
+     }).subscribe();
+
+
+
     Object.assign(this, {single});
     // Chart
     this.multi = multi.map((group: any) => {
@@ -63,22 +68,23 @@ export class ProcessesViewComponent implements OnInit {
   }
 
   addProcess() {
-    this.store.dispatch(new ProcessDialogOpen())
-
+    this.store.dispatch(new ProcessDialogOpenCreate())
   }
-  popDialog() {
 
+  popDialog() {
     this.dialogRef= this.dialog.open(ProcessDialogComponent, {
-        height: '650px',
+        height: '700px',
         width: '600px',
         disableClose:true
       }
     );
+
   }
   closeDialog(){
     if( this.dialogRef)
       this.dialogRef.close();
   }
+
   ngOnInit() {
   }
 
