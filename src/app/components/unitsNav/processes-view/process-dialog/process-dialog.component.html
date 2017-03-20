@@ -52,11 +52,11 @@
 
     <div formArrayName="units">
 
-      <p [formGroupName]="0">
-        <app-related-units [group]="processForm.controls['units'].controls[0]"></app-related-units>
+      <p formGroupName="0">
+        <app-related-units   [group]="processForm.controls.units.controls[0]"></app-related-units>
       </p>
-      <p [formGroupName]="1">
-        <app-related-units [group]="processForm.controls['units'].controls[1]"></app-related-units>
+      <p formGroupName="1">
+        <app-related-units   [group]="processForm.controls.units.controls[1]"></app-related-units>
       </p>
 
       <!--   <p [formGroupName]="0">

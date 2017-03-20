@@ -55,10 +55,6 @@ import { RelatedUnitsComponent } from './components/unitsNav/processes-view/proc
     userFullNamePipe,
     orgUnitsPipe,
     RelatedUnitsComponent
-
-
-
-
   ],
 
 

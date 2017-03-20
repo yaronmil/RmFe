@@ -1,8 +1,5 @@
-export interface orgUnit{
-  id:number,
+import {lookup} from "../client/lookup";
+export interface orgUnit extends lookup{
   parentId:number,
-  name:string
-
   icon:string
-
 }

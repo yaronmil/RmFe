@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, FormBuilder} from "@angular/forms";
+import {FormControl, FormGroup, FormBuilder, FormArray} from "@angular/forms";
 import Promise = promise.Promise;
 import {promise} from "selenium-webdriver";
 
@@ -99,13 +99,13 @@ export class ProcessDialogComponent {
       resp: [],
       color: this.colorCtrl,
       units: this.formBuilder.array([
-        this.formBuilder.group({
-          department:this.departmentCtrl,
-          unit:this.unitCtrl
+        this.formBuilder .group({
+          department:[],
+          unit:[]
         }),
         this.formBuilder.group({
-          department:this.departmentCtrl,
-          unit:this.unitCtrl
+          department:[],
+          unit:[]
         })
       ]),
       map: [],
@@ -136,6 +136,14 @@ export class ProcessDialogComponent {
   }
 
   public  save() {
+
+    var unitsFa= this.processForm.controls['units'] as FormArray ;
+    var unitsFg= unitsFa.controls[0] as FormGroup;
+    unitsFg.removeControl("department");
+
+    unitsFg= unitsFa.controls[1] as FormGroup;
+    unitsFg.removeControl("department");
+
     if (this.isEditMode)
       this.store.dispatch(new ProcessEditSave(this.processForm.value))
     else
@@ -154,7 +162,6 @@ export class ProcessDialogComponent {
 
 
   private onDepartmentSelect(dep) {
-    console.log(dep);
     this.filteredUnits.subscribe();
   }
 
@@ -187,12 +194,10 @@ export class ProcessDialogComponent {
   }
 
   private filterdUnits(val: string) {
-    console.log("val=", this.departmentCtrl.value === null);
     if (this.departmentCtrl.value === null)
       return Observable.from([]);
 
     var parent = this.departmentCtrl.value.id;
-    console.log(parent);
     var selector = this.store.select(appStore.getOrgUnitsList).map(orgUnits => orgUnits.filter(ou => ou.parentId == parent));
     return val ?
       selector :

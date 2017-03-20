@@ -7,8 +7,8 @@ import {orgUnit} from "../models/shared/orgUnit";
 
 @Pipe({name: 'orgunits-pipe'})
 export class orgUnitsPipe implements PipeTransform {
-  transform(orgUnits: orgUnit[] ): string {
-    return orgUnits.map(ou=>ou.name).join(",");
+  transform(orgUnits:  any[] ): string {
+    return orgUnits.map(ou=>ou.unit).map(ou=>ou.name).join(",");
 
   }
 }
