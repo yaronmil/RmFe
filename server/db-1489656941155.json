@@ -1,77 +1,5 @@
 {
-  "processes": [
-    {
-      "id": 5,
-      "status": "ממתין לאישור",
-      "name": "אבג",
-      "desc": "ירון למה ככה",
-      "resp": {
-        "id": 1,
-        "firstName": "ירון",
-        "lastName": "מילשטיין"
-      },
-      "color": "כתום",
-      "units": [
-        {
-          "unit": {
-            "id": 40,
-            "parentId": 4,
-            "name": "תחום א\"גח",
-            "icon": "developer_mode",
-            "children": []
-          },
-          "desc": ""
-        },
-        {
-          "unit": {
-            "id": 31,
-            "parentId": 10,
-            "name": "פיתוח",
-            "icon": "developer_board",
-            "children": []
-          },
-          "desc": ""
-        }
-      ],
-      "map": "לא"
-    },
-    {
-      "id": 6,
-      "status": "טיוטה",
-      "name": "",
-      "desc": "gggg",
-      "resp": {
-        "id": 1,
-        "firstName": "ירון",
-        "lastName": "מילשטיין"
-      },
-      "color": "ירוק",
-      "units": [
-        {
-          "unit": {
-            "id": 29,
-            "name": "אבטחת מידע",
-            "parentId": 10,
-            "isExpanded": false,
-            "icon": "attach_money",
-            "children": []
-          },
-          "desc": "תת תהליך"
-        },
-        {
-          "unit": {
-            "id": 43,
-            "parentId": 4,
-            "name": "תחום לא סחיר",
-            "icon": "developer_mode",
-            "children": []
-          },
-          "desc": ""
-        }
-      ],
-      "map": "כן"
-    }
-  ],
+  "processes": [],
   "users": [
     {
       "id": 1,
@@ -157,7 +85,7 @@
       "children": []
     },
     {
-      "id": 5,
+      "id": 4,
       "parentId": 1,
       "name": "השקעות",
       "isExpanded": true,

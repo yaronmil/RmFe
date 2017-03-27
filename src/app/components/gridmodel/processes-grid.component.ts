@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {process} from "../../models/shared/process";
 import {Observable} from "rxjs";
 import * as appStore from '../../store/reducers';
@@ -15,7 +15,9 @@ import {orgUnitsPipe} from "../../pipes/orgunits-pipe";
 @Component({
   selector: 'app-processes-grid',
   templateUrl: './processes-grid.component.html',
-  providers: [orgUnitsPipe]
+  styles: ['.mat-table-container { height:290px !important; }'],
+  providers: [orgUnitsPipe],
+  encapsulation: ViewEncapsulation.None
 
 })
 export class ProcessesGridComponent implements OnInit {

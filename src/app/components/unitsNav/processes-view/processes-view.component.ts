@@ -23,6 +23,89 @@ export class ProcessesViewComponent implements OnInit {
   /*openDialog$:Observable<boolean>;*/
   single: any[];
   multi: any[];
+
+  chart2:any[]=[
+    {
+      "name": "אדום",
+      "series": [
+        {
+          "value": 5,
+          "name": "< חצי שנה"
+        },
+        {
+          "value": 2,
+          "name": "<חודש"
+        },
+        {
+          "value": 1,
+          "name": "ממתין"
+        },
+        {
+          "value": 7,
+          "name": "סגור"
+        }
+
+      ]
+    },
+    {
+      "name": "כתום",
+      "series": [
+        {
+          "value": 1,
+          "name": "< חצי שנה"
+        },
+        {
+          "value": 2,
+          "name": "<חודש"
+        },
+        {
+          "value": 3,
+          "name": "ממתין"
+        },
+        {
+          "value": 7,
+          "name": "סגור"
+        }
+
+      ]
+    },
+    {
+      "name": "ירוק",
+      "series": [
+        {
+          "value":8,
+          "name": "< חצי שנה"
+        },
+        {
+          "value": 2,
+          "name": "<חודש"
+        },
+        {
+          "value": 0,
+          "name": "ממתין"
+        },
+        {
+          "value": 1,
+          "name": "סגור"
+        }
+
+      ]
+    }
+  ]
+  chart1:any[]=[
+    {
+      'name': 'אדום',
+      'value': 5
+    },
+    {
+      'name': 'כתום',
+      'value': 3
+    },
+    {
+      'name': 'ירוק',
+      'value':8,
+    }
+    ];
   view: any[] = [350, 200];
 
 
@@ -38,6 +121,9 @@ export class ProcessesViewComponent implements OnInit {
 
   colorScheme: any = {
     domain: ['#9575CD', '#4FC3F7', '#4DD0E1', '#4DB6AC', '#66BB6A', '#9CCC65'],
+  };
+  colorScheme1: any = {
+    domain: ['red', 'orange', 'green'],
   };
 
 
@@ -64,6 +150,7 @@ export class ProcessesViewComponent implements OnInit {
       });
       return group;
     });
+    console.log("multi",multi);
 
   }
 
@@ -73,8 +160,8 @@ export class ProcessesViewComponent implements OnInit {
 
   popDialog() {
     this.dialogRef= this.dialog.open(ProcessDialogComponent, {
-        height: '700px',
-        width: '600px',
+        height: '750px',
+        width: '700px',
         disableClose:true
       }
     );

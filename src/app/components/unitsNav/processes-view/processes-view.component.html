@@ -10,27 +10,27 @@
   <div layout-gt-xs="row" layout-wrap>
     <div flex-gt-xs="33" style="direction: rtl;">
       <md-card>
-        <md-card-title>מספר תהליכים לפי צבע</md-card-title>
+        <md-card-title>התפלגות תהליכים במפה לפי חומרה</md-card-title>
         <md-divider></md-divider>
         <div style="height:250px;direction: ltr;" class="pad-top">
-          <ngx-charts-bar-vertical-2d
+          <ngx-charts-bar-vertical
             [scheme]="colorScheme"
-            [results]="multi"
+            [results]="chart1"
             [gradient]="gradient"
             [xAxis]="showXAxis"
             [yAxis]="showYAxis"
             [legend]="showLegend"
             [showXAxisLabel]="showXAxisLabel"
             [showYAxisLabel]="showYAxisLabel"
-            [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel">
-          </ngx-charts-bar-vertical-2d>
+            [xAxisLabel]="''"
+            [yAxisLabel]="'כמות תהליכים'">
+          </ngx-charts-bar-vertical >
         </div>
       </md-card>
     </div>
     <div flex-gt-xs="33" style="direction: rtl;">
       <md-card>
-        <md-card-title>התפלגות תהליכים במפה</md-card-title>
+        <md-card-title>התפלגות תהליכים לפי חומרה</md-card-title>
         <md-divider></md-divider>
         <div style="height:250px;direction: ltr;" class="pad-top">
           <ngx-charts-pie-chart
@@ -50,12 +50,12 @@
     </div>
     <div flex-gt-xs="33" style="direction: rtl;">
       <md-card>
-        <md-card-title>מספר תהליכים לפי צבע</md-card-title>
+        <md-card-title>התפלגות משימות לפי חומרה</md-card-title>
         <md-divider></md-divider>
         <div style="height:250px;direction: ltr;" class="pad-top">
           <ngx-charts-bar-vertical-2d
             [scheme]="colorScheme"
-            [results]="multi"
+            [results]="chart2"
             [gradient]="gradient"
             [xAxis]="showXAxis"
             [yAxis]="showYAxis"
@@ -63,7 +63,7 @@
             [showXAxisLabel]="showXAxisLabel"
             [showYAxisLabel]="showYAxisLabel"
             [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel">
+            [yAxisLabel]="'מספר משימות'">
           </ngx-charts-bar-vertical-2d>
         </div>
       </md-card>

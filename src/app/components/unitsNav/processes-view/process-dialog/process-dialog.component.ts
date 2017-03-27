@@ -101,11 +101,13 @@ export class ProcessDialogComponent {
       units: this.formBuilder.array([
         this.formBuilder .group({
           department:[],
-          unit:[]
+          unit:[],
+          desc:[]
         }),
         this.formBuilder.group({
           department:[],
-          unit:[]
+          unit:[],
+          desc:[]
         })
       ]),
       map: [],

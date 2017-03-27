@@ -1,6 +1,9 @@
-<h2 md-dialog-title dir="rtl">הוסף תהליך</h2>
-<md-dialog-content dir="rtl" style="max-height: 800px;">
 
+
+<md-dialog-content dir="rtl" style="max-height: 800px;">
+  <md-card>
+    <md-card-title>תהליך חדש</md-card-title>
+    <md-card-content>
   <form [formGroup]="processForm" novalidate>
     <p>
       <md-input-container class="example-full-width">
@@ -131,6 +134,8 @@
 
     </p>
   </form>
+      </md-card-content>
+  </md-card>
 </md-dialog-content>
 <md-dialog-actions [attr.align]="'left'">
   <button (click)="save();"
