@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, FormBuilder, FormArray} from "@angular/forms";
 import Promise = promise.Promise;
 import {promise} from "selenium-webdriver";
@@ -21,7 +21,8 @@ import {process} from "../../../../models/shared/process";
   selector: 'app-process-dialog',
   templateUrl: './process-dialog.component.html',
   styleUrls: ['./process-dialog.component.css'],
-  providers: [userFullNamePipe]
+  providers: [userFullNamePipe],
+  encapsulation: ViewEncapsulation.None
 })
 export class ProcessDialogComponent {
   isEditMode: boolean = false;

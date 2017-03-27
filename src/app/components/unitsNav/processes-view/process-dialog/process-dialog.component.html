@@ -1,140 +1,97 @@
+<h2 md-dialog-title dir="rtl">תהליך חדש</h2>
+<md-dialog-content dir="rtl" style="max-height: 550px;overflow-x: auto;">
 
-
-<md-dialog-content dir="rtl" style="max-height: 800px;">
   <md-card>
-    <md-card-title>תהליך חדש</md-card-title>
-    <md-card-content>
-  <form [formGroup]="processForm" novalidate>
-    <p>
-      <md-input-container class="example-full-width">
-        <input mdInput placeholder="שם תהליך" formControlName="name">
+    <md-card-content style="overflow-x: auto;">
+      <form [formGroup]="processForm" novalidate>
+        <p>
+          <md-input-container class="example-full-width">
+            <input mdInput placeholder="שם תהליך" formControlName="name">
 
-      </md-input-container>
-    </p>
+          </md-input-container>
+        </p>
 
-    <p>
-      <md-input-container>
+        <p>
+          <md-input-container>
         <textarea mdInput
                   mdTextareaAutosize
                   placeholder="תיאור תהליך" formControlName="desc"></textarea>
-      </md-input-container>
-    </p>
+          </md-input-container>
+        </p>
 
-    <p>
-      שייך למפה
-      <md-radio-group value="לא" formControlName="map">
-        <md-radio-button value="כן">כן</md-radio-button>
-        <md-radio-button value="לא">לא</md-radio-button>
-      </md-radio-group>
-    </p>
+        <p>
+          שייך למפה
+          <md-radio-group value="לא" formControlName="map">
+            <md-radio-button value="כן">כן</md-radio-button>
+            <md-radio-button value="לא">לא</md-radio-button>
+          </md-radio-group>
+        </p>
 
-    <p>
-      <md-input-container class="example-full-width">
-        <input mdInput placeholder="אחראי" [mdAutocomplete]="users" formControlName="resp">
+        <p>
+          <md-input-container class="example-full-width">
+            <input mdInput placeholder="אחראי" [mdAutocomplete]="users" formControlName="resp">
 
-      </md-input-container>
-      <md-autocomplete #users="mdAutocomplete" [displayWith]="displayFn">
-        <md-option *ngFor="let resp of filteredResp | async" [value]="resp">
-          {{ resp |userFullNamePipe }}
-        </md-option>
-      </md-autocomplete>
+          </md-input-container>
+          <md-autocomplete #users="mdAutocomplete" [displayWith]="displayFn">
+            <md-option *ngFor="let resp of filteredResp | async" [value]="resp">
+              {{ resp |userFullNamePipe }}
+            </md-option>
+          </md-autocomplete>
 
-    </p>
-    <p>
-      <md-input-container>
-        <input mdInput placeholder="סטטוס" [mdAutocomplete]="auto" formControlName="status">
-      </md-input-container>
+        </p>
+        <p>
+          <md-input-container>
+            <input mdInput placeholder="סטטוס" [mdAutocomplete]="auto" formControlName="status">
+          </md-input-container>
 
-      <md-autocomplete #auto="mdAutocomplete">
-        <md-option *ngFor="let state of filteredStates | async" [value]="state">
-          {{ state }}
-        </md-option>
-      </md-autocomplete>
-    </p>
+          <md-autocomplete #auto="mdAutocomplete">
+            <md-option *ngFor="let state of filteredStates | async" [value]="state">
+              {{ state }}
+            </md-option>
+          </md-autocomplete>
+        </p>
 
+        <md-card>
+          <md-card-content>
+            <div formArrayName="units">
 
-    <div formArrayName="units">
-
-      <p formGroupName="0">
-        <app-related-units   [group]="processForm.controls.units.controls[0]"></app-related-units>
-      </p>
-      <p formGroupName="1">
-        <app-related-units   [group]="processForm.controls.units.controls[1]"></app-related-units>
-      </p>
-
-      <!--   <p [formGroupName]="0">
-         <md-input-container>
-           <input mdInput placeholder="חטיבה" [mdAutocomplete]="department" formControlName="department" >
-         </md-input-container>
-
-         <md-autocomplete #department [displayWith]="getOrgUnitName"   >
-           <md-option *ngFor="let department of filteredDepartments | async" [value]="department"  (onSelect)="onDepartmentSelect(department)"  >
-             {{ department.name }}
-           </md-option>
-         </md-autocomplete>
-
-         <md-input-container  >
-           <input mdInput placeholder="יחידה"  [mdAutocomplete]="unit" formControlName="unit">
-
-         </md-input-container>
-
-         <md-autocomplete #unit [displayWith]="getOrgUnitName"  >
-           <md-option *ngFor="let unit of filteredUnits | async" [value]="unit">
-             {{ unit.name }}
-           </md-option>
-         </md-autocomplete>
-         </p>
-         <p [formGroupName]="1">
-           <md-input-container>
-             <input mdInput placeholder="חטיבה" [mdAutocomplete]="department" formControlName="department" >
-           </md-input-container>
-
-           <md-autocomplete #department [displayWith]="getOrgUnitName"   >
-             <md-option *ngFor="let department of filteredDepartments | async" [value]="department"  (onSelect)="onDepartmentSelect(department)"  >
-               {{ department.name }}
-             </md-option>
-           </md-autocomplete>
-
-           <md-input-container  >
-             <input mdInput placeholder="יחידה"  [mdAutocomplete]="unit" formControlName="unit">
-
-           </md-input-container>
-
-           <md-autocomplete #unit [displayWith]="getOrgUnitName"  >
-             <md-option *ngFor="let unit of filteredUnits | async" [value]="unit">
-               {{ unit.name }}
-             </md-option>
-           </md-autocomplete>
-         </p>-->
-
-    </div>
-
-    <p>
+              <p formGroupName="0">
+                <app-related-units [group]="processForm.controls.units.controls[0]"></app-related-units>
+              </p>
+              <p formGroupName="1">
+                <app-related-units [group]="processForm.controls.units.controls[1]"></app-related-units>
+              </p>
 
 
-      <md-select placeholder="צבע" formControlName="color">
-        <md-option *ngFor="let color of colors" [value]="color">
-          {{color}}
-        </md-option>
-      </md-select>
+            </div>
+          </md-card-content>
+        </md-card>
+        <p>
 
 
-      <!--   <md-input-container  >
-           <input mdInput placeholder="צבע"  [mdAutocomplete]="color"  formControlName="color">
+          <md-select placeholder="צבע" formControlName="color">
+            <md-option *ngFor="let color of colors" [value]="color">
+              {{color}}
+            </md-option>
+          </md-select>
 
-         </md-input-container>
-         <md-autocomplete #color   >
-           <md-option *ngFor="let color of filteredColors | async" [value]="color">
-             {{ color }}
-           </md-option>
-         </md-autocomplete>-->
 
-    </p>
-    <p>
+          <!--   <md-input-container  >
+               <input mdInput placeholder="צבע"  [mdAutocomplete]="color"  formControlName="color">
 
-    </p>
-  </form>
-      </md-card-content>
+             </md-input-container>
+             <md-autocomplete #color   >
+               <md-option *ngFor="let color of filteredColors | async" [value]="color">
+                 {{ color }}
+               </md-option>
+             </md-autocomplete>-->
+
+        </p>
+        <p>
+
+        </p>
+      </form>
+    </md-card-content>
   </md-card>
 </md-dialog-content>
 <md-dialog-actions [attr.align]="'left'">

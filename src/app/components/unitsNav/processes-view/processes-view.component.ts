@@ -160,8 +160,8 @@ export class ProcessesViewComponent implements OnInit {
 
   popDialog() {
     this.dialogRef= this.dialog.open(ProcessDialogComponent, {
-        height: '750px',
-        width: '700px',
+        height: '700px',
+
         disableClose:true
       }
     );
