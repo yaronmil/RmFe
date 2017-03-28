@@ -35,7 +35,7 @@ export function reducer(state = initialState, action: Actions.Actions): State {
     case Actions.LOAD_ORG_UNITS:
       return state;
     case Actions.ORG_UNITS_LOADED: {
-      const orgUnitsList: orgUnit[] = (action as Action).payload;
+      const orgUnitsList: orgUnit[] = (action as  Action).payload;
       var ret = Object.assign({}, state, {orgUnitsList})
       return ret;
     }

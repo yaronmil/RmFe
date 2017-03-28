@@ -30,7 +30,7 @@ export function reducer(state = initialState, action: Actions): State {
       return Object.assign({}, state, {dialogState: OpenCloseEnum.open},{processToEdit:null});
 
     case processesActions.PROCESS_DIALOG_OPEN_EDIT:
-      const processToEdit = (<processesActions.CreateAction> action).payload;
+      const processToEdit = (<processesActions.EditProcess> action).payload;
       return Object.assign({}, state, {dialogState: OpenCloseEnum.open}, {processToEdit});
 
     case processesActions.PROCESS_EDIT_SAVE:
@@ -41,7 +41,7 @@ export function reducer(state = initialState, action: Actions): State {
 
     case processesActions.EDITED_PROCESS_SAVED:
     {
-      const editedprocess = (<processesActions.CreateAction> action).payload;
+      const editedprocess = (<processesActions.EditedProcessSaved> action).payload;
       var processesList=state.processesList.filter(pl => pl.id != editedprocess.id);
 
       processesList.push(editedprocess);
@@ -56,12 +56,12 @@ export function reducer(state = initialState, action: Actions): State {
     case processesActions.CREATE_PROCESS:
       return state;
     case processesActions.PROCESS_CREATED: {
-      const newProcess = (<processesActions.CreateAction> action).payload;
+      const newProcess = (<processesActions.ProcessCreated> action).payload;
       const processesList = [...state.processesList, newProcess]
       return Object.assign({}, state, {processesList});
     }
     case processesActions.DELETE_PROCESS:
-      const ProcessToDelete = (<processesActions.CreateAction> action).payload;
+      const ProcessToDelete = (<processesActions.DeleteProcess> action).payload;
 
       return Object.assign({}, state, {processesList: state.processesList.filter(pl => pl.id != ProcessToDelete.id)});
     case processesActions.PROCESS_DELETED:

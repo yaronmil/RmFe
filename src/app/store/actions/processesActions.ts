@@ -127,6 +127,6 @@ export class ProcessManualyCreated implements Action {
 
 }
 export type Actions
-  = LoadProcessesAction | ProcessesLoaded |CreateAction |ProcessCreated | ProcessDialogOpenCreate|EditProcess|ProcessDialogClose|ProcessManualyCreated|ProcessEditSave |EditedProcessSaved;
+  = LoadProcessesAction | ProcessesLoaded |CreateAction |ProcessCreated | ProcessDialogOpenCreate|EditProcess|ProcessDialogClose|ProcessManualyCreated|ProcessEditSave |EditedProcessSaved|ProcessDeleted|DeleteProcess;
 
 

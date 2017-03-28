@@ -150,7 +150,6 @@ export class ProcessesViewComponent implements OnInit {
       });
       return group;
     });
-    console.log("multi",multi);
 
   }
 

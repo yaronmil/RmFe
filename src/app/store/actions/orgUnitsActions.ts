@@ -43,6 +43,6 @@ export class LoadOrgUnits implements  Action {
 }*/
 
 export type Actions
-  = LoadOrgUnits ;
+  = LoadOrgUnits|OrgUnitsLoaded ;
 
 

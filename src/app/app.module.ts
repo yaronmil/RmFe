@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -33,6 +34,7 @@ import {UsersEffectService} from "./store/effects/users-effects.service";
 import {userFullNamePipe} from "./pipes/userFullNamePipe";
 import {orgUnitsPipe} from "./pipes/orgunits-pipe";
 import { RelatedUnitsComponent } from './components/unitsNav/processes-view/process-dialog/related-units/related-units.component';
+import { RisksViewComponent } from './components/unitsNav/risks-view/risks-view.component';
 
 
 
@@ -54,12 +56,14 @@ import { RelatedUnitsComponent } from './components/unitsNav/processes-view/proc
     ProcessDialogComponent,
     userFullNamePipe,
     orgUnitsPipe,
-    RelatedUnitsComponent
+    RelatedUnitsComponent,
+    RisksViewComponent
   ],
 
 
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     CovalentCoreModule.forRoot(),
